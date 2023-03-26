@@ -1,0 +1,111 @@
+---
+import {
+  Breadcrumbs,
+  BreadcrumbLink,
+} from "../../components/Breadcrumbs/Breadcrumbs";
+import ContentPage from "../../components/ContentPage.astro";
+import { MetaBuilder } from "../../meta";
+
+const metaBuilder = new MetaBuilder();
+metaBuilder.title("Lindner IT - skalierbare Backendlösungen");
+metaBuilder.description(
+  "Lindner IT ist spezialisiert auf die Entwicklung von Cloud-nativen Backend-Anwendungen. Wir bieten maßgeschneiderte Lösungen für unsere Kunden, die auf ihre individuellen Anforderungen zugeschnitten sind."
+);
+metaBuilder.keywords([
+  "Backend-Entwicklung",
+  "Cloud-nativ",
+  "Cloud-Technologie",
+  "skalierbare Backend-Anwendungen",
+  "Node.js",
+  "Java",
+  "Python",
+  "Go",
+  "Backend-Architektur",
+  "maßgeschneiderte Lösungen",
+  "Geschäftsprozesse",
+  "Konzeption",
+  "Design",
+  "Implementierung",
+  "Wartung",
+  "Beratung",
+  "Lindner IT",
+]);
+metaBuilder.revisedAt(new Date());
+metaBuilder.jsonld({
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    {
+      "@type": "ListItem",
+      position: 1,
+      name: "Lösungen",
+      item: "https://lindnerit.io/solutions",
+    },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: "Individuelle Entwicklungen",
+      item: "https://lindnerit.io/solutions",
+    },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: "Backend-Entwicklung",
+      item: "https://lindnerit.io/solutions/backend-development",
+    },
+  ],
+});
+
+const links: BreadcrumbLink[] = [
+  {
+    href: "/solutions",
+    title: "Lösungen",
+  },
+  {
+    href: "/solutions",
+    title: "Individuelle Entwicklungen",
+  },
+  {
+    href: "/solutions/backend-development",
+    title: "Backend-Entwicklung",
+    isCurrent: true,
+  },
+];
+
+const meta = metaBuilder.create();
+---
+
+<ContentPage {meta}>
+  <Breadcrumbs links={links} />
+  <h1>Backend-Entwicklung</h1>
+  <p>
+    Als Unternehmen ist es wichtig, eine skalierbare und zuverlässige
+    IT-Infrastruktur zu haben. Eine gut gestaltete Backend-Architektur ist dabei
+    unerlässlich. Bei Lindner IT sind wir auf die Entwicklung von Cloud-nativen
+    Backend-Anwendungen spezialisiert. Wir entwickeln maßgeschneiderte Lösungen
+    für unsere Kunden, die auf deren individuelle Anforderungen zugeschnitten
+    sind.
+  </p>
+  <br /><p>
+    Unsere Backend-Entwickler verfügen über umfassende Erfahrung in der
+    Entwicklung von Backend-Anwendungen mit verschiedenen Technologien wie
+    Node.js, Java, Python und Go. Wir arbeiten eng mit unseren Kunden zusammen,
+    um ihre Anforderungen zu verstehen und ihre Geschäftsprozesse in unseren
+    Lösungen zu integrieren.
+  </p>
+  <br /><p>
+    Unsere Expertise in der Cloud-Technologie ermöglicht es uns, skalierbare
+    Backend-Anwendungen zu entwickeln, die in der Cloud laufen und auf eine
+    nahtlose Skalierung ausgelegt sind. Wir nutzen modernste Technologien und
+    bewährte Methoden, um eine leistungsfähige und zuverlässige
+    Backend-Architektur zu entwickeln, die unseren Kunden dabei hilft, ihr
+    Geschäft erfolgreich zu führen.
+  </p>
+  <br /><p>
+    Unsere Backend-Entwicklungsdienstleistungen umfassen Konzeption, Design,
+    Implementierung und Wartung. Wir bieten unseren Kunden eine umfassende
+    Beratung, um sicherzustellen, dass ihre Backend-Anwendungen den
+    Anforderungen ihres Unternehmens entsprechen. Kontaktieren Sie uns, um mehr
+    über unsere Backend-Entwicklungsdienstleistungen zu erfahren
+  </p>
+</ContentPage>

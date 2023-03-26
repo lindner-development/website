@@ -1,0 +1,120 @@
+---
+export { getStaticPaths } from "../static-language-paths";
+import {
+  Breadcrumbs,
+  BreadcrumbLink,
+} from "../../components/Breadcrumbs/Breadcrumbs";
+import { Button } from "../../components/Button/Button";
+import ContentPage from "../../components/ContentPage.astro";
+import { useTranslations } from "../../i18n/utils";
+import { MetaBuilder } from "../../meta";
+
+const { language } = Astro.params;
+const t = useTranslations((language ?? "en") as "en" | "de");
+
+const metaBuilder = new MetaBuilder();
+metaBuilder.title(t("about-us.title"));
+metaBuilder.description(t("about-us.description"));
+metaBuilder.keywords(t("about-us.keywords"));
+metaBuilder.revisedAt(new Date());
+metaBuilder.jsonld({
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    {
+      "@type": "ListItem",
+      position: 1,
+      name: t("about-us.h1"),
+      item: `https://lindnerit.io/${language}/about-us`,
+    },
+  ],
+});
+
+const links: BreadcrumbLink[] = [
+  {
+    href: `/${language}/`,
+    title: "Lindner IT",
+  },
+  {
+    href: `/${language}/about-us`,
+    title: t("about-us.h1"),
+    isCurrent: true,
+  },
+];
+const meta = metaBuilder.create();
+---
+
+<style lang="scss">
+  li {
+    list-style-position: inside;
+  }
+
+  section {
+    margin-top: 1rem;
+  }
+
+  .contact-button {
+    margin-top: 1rem;
+  }
+</style>
+<ContentPage {meta}>
+  <Breadcrumbs links={links} />
+  <h1>{t("about-us.h1")}</h1>
+  <p>{t("about-us.h1.subheading")}</p>
+
+  <section id="mission">
+    <h2>{t("about-us.mission.h2")}</h2>
+    <p>{t("about-us.mission.content")}</p>
+  </section>
+
+  <section id="founder">
+    <h2>{t("about-us.founder.h2")}</h2>
+    <p>{t("about-us.founder.content")}</p>
+  </section>
+
+  <section id="values">
+    <h2>{t("about-us.values.h2")}</h2>
+    <p>{t("about-us.values.content")}</p>
+  </section>
+
+  <section id="why">
+    <h2>{t("about-us.why.h2")}</h2>
+    <ul>
+      <li>
+        <strong>{t("about-us.why.expertise.title")}:</strong>
+        {t("about-us.why.expertise.content")}
+      </li>
+      <li>
+        <strong>{t("about-us.why.innovation.title")}:</strong>
+        {t("about-us.why.innovation.content")}
+      </li>
+      <li>
+        <strong>{t("about-us.why.customer-focus.title")}:</strong>
+        {t("about-us.why.customer-focus.content")}
+      </li>
+      <li>
+        <strong>{t("about-us.why.flexibility.title")}:</strong>
+        {t("about-us.why.flexibility.content")}
+      </li>
+    </ul>
+  </section>
+
+  <section id="contact">
+    <h2>{t("about-us.contact.h2")}</h2>
+    <p>
+      {t("about-us.contact.content")}
+    </p>
+    <a
+      title={t("about-us.contact.button")}
+      href="mailto:info@lindnerit.io?subject=Grid-Computing interest"
+    >
+      <Button
+        class="contact-button"
+        title={t("about-us.contact.button")}
+        variant="primary"
+      >
+        {t("about-us.contact.button")}
+      </Button>
+    </a>
+  </section>
+</ContentPage>

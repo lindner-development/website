@@ -1,0 +1,101 @@
+---
+import {
+  Breadcrumbs,
+  BreadcrumbLink,
+} from "../../components/Breadcrumbs/Breadcrumbs";
+import ContentPage from "../../components/ContentPage.astro";
+import { MetaBuilder } from "../../meta";
+
+const metaBuilder = new MetaBuilder();
+metaBuilder.title("Lindner IT - mobile App-Entwicklung");
+metaBuilder.description(
+  "Entdecken Sie das umfassende Mobile App Development-Angebot von Lindner IT für iOS und Android. Unsere maßgeschneiderten Lösungen werden Ihre Erwartungen übertreffen und Ihr Unternehmen voranbringen. Kontaktieren Sie uns noch heute, um mehr zu erfahren."
+);
+metaBuilder.keywords([
+  "Mobile App Development",
+  "iOS",
+  "Android",
+  "maßgeschneiderte Lösungen",
+  "Entwicklungsprozess",
+  "Zusammenarbeit",
+  "Verbraucher-Apps",
+  "Unternehmens-Apps",
+  "Tools",
+  "Technologien",
+  "Benutzerfreundlichkeit",
+  "Skalierbarkeit",
+  "Sicherheit",
+  "Lindner IT",
+]);
+metaBuilder.revisedAt(new Date());
+metaBuilder.jsonld({
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    {
+      "@type": "ListItem",
+      position: 1,
+      name: "Lösungen",
+      item: "https://lindnerit.io/solutions",
+    },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: "Individuelle Entwicklungen",
+      item: "https://lindnerit.io/solutions",
+    },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: "App-Entwicklung",
+      item: "https://lindnerit.io/solutions/mobile-development",
+    },
+  ],
+});
+
+const links: BreadcrumbLink[] = [
+  {
+    href: "/solutions",
+    title: "Lösungen",
+  },
+  {
+    href: "/solutions",
+    title: "Individuelle Entwicklungen",
+  },
+  {
+    href: "/solutions/mobile-development",
+    title: "App-Entwicklung",
+    isCurrent: true,
+  },
+];
+const meta = metaBuilder.create();
+---
+
+<ContentPage {meta}>
+  <Breadcrumbs links={links} />
+  <p>
+    Willkommen bei Lindner IT, Ihrem zuverlässigen Partner für Mobile App
+    Development. Unsere erfahrenen Entwickler haben jahrelange Erfahrung in der
+    Entwicklung von mobilen Anwendungen für iOS und Android. Wir sind stolz
+    darauf, unseren Kunden maßgeschneiderte mobile Lösungen anzubieten, die auf
+    ihre spezifischen Anforderungen zugeschnitten sind.
+  </p>
+  <br /><p>
+    Wir legen Wert auf eine enge Zusammenarbeit mit unseren Kunden, um
+    sicherzustellen, dass wir ihre Erwartungen übertreffen und ihre Ziele
+    erreichen. Unser Entwicklungsprozess ist transparent und kollaborativ,
+    sodass Sie jederzeit auf dem Laufenden sind.
+  </p>
+  <br /><p>
+    Ob es sich um eine App für Verbraucher oder für Unternehmen handelt, wir
+    haben die Fähigkeiten und das Know-how, um Ihre Ideen in die Realität
+    umzusetzen. Wir verwenden die neuesten Tools und Technologien, um
+    hochwertige mobile Anwendungen zu entwickeln, die benutzerfreundlich,
+    skalierbar und sicher sind.
+  </p>
+  <br /><p>
+    Kontaktieren Sie uns, um mehr darüber zu erfahren, wie wir Ihnen bei der
+    Entwicklung einer mobilen Anwendung helfen können, die Ihr Unternehmen
+    voranbringt. Wir freuen uns darauf, von Ihnen zu hören.
+  </p>
+</ContentPage>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+	x="0px" y="0px"
+	viewBox="0 0 1080 1080" style="enable-background:new 0 0 1080 1080;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#0093E7;}
+	.st1{fill:#9CCC65;}
+</style>
+<g id="Ebene_1">
+</g>
+<g id="Ebene_2">
+	<g>
+		<path class="st0" d="M228.65,70.43v530.82c0,112.75,91.41,204.16,204.16,204.16V274.59C432.82,161.84,341.41,70.43,228.65,70.43z"
+			/>
+		<path class="st1" d="M647.18,805.41H432.82c0,112.75,91.41,204.16,204.16,204.16h214.37
+			C851.35,896.81,759.94,805.41,647.18,805.41z"/>
+	</g>
+</g>
+</svg>

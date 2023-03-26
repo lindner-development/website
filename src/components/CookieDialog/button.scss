@@ -1,0 +1,40 @@
+.cookie-button-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 100%;
+}
+.cookie-button {
+  appearance: none;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+  width: auto;
+  outline: none;
+  border-radius: 6px;
+  padding: 0 16px;
+  background-color: hsl(200 98% 39%);
+  color: white;
+  font-size: 16px;
+  line-height: 0;
+  transition: 250ms background-color;
+  border-style: none;
+  cursor: pointer;
+  width: 100%;
+
+  &--small {
+    height: 30px;
+    font-size: 10pt;
+  }
+}
+.cookie-button:hover {
+  background-color: hsl(201 96% 32%);
+}
+.cookie-button:focus-visible {
+  outline: 2px solid hsl(200 98% 39%);
+  outline-offset: 2px;
+}
+.cookie-button:active {
+  background-color: hsl(201 90% 27%);
+}

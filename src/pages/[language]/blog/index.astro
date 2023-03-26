@@ -1,0 +1,115 @@
+---
+import { getCollection } from "astro:content";
+import ContentPage from "../../../components/ContentPage.astro";
+import { useTranslations } from "../../../i18n/utils";
+import { MetaBuilder } from "../../../meta";
+import {
+  BreadcrumbLink,
+  Breadcrumbs,
+} from "../../../components/Breadcrumbs/Breadcrumbs";
+export { getStaticPaths } from "../../static-language-paths";
+
+const { language } = Astro.params;
+const t = useTranslations((language ?? "en") as "en" | "de");
+
+const collection = await getCollection("blog");
+
+const pages = collection
+  .filter((p) => p.data.language == language)
+  .map((post) => {
+    return {
+      path: `/${post.data.language}/blog/${post.slug}`,
+      data: post.data,
+    };
+  });
+
+const metaBuilder = new MetaBuilder();
+metaBuilder.title(t("blog.title"));
+metaBuilder.description(t("blog.description"));
+metaBuilder.keywords(t("blog.keywords"));
+metaBuilder.revisedAt(new Date());
+metaBuilder.jsonld({
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    {
+      "@type": "ListItem",
+      position: 1,
+      name: t("blog.h1"),
+      item: `https://lindnerit.io/${language}/blog`,
+    },
+  ],
+});
+
+const links: BreadcrumbLink[] = [
+  {
+    href: `/${language}/`,
+    title: "Lindner IT",
+  },
+  {
+    href: `/${language}/blog`,
+    title: t("blog.h1"),
+    isCurrent: true,
+  },
+];
+const meta = metaBuilder.create();
+---
+
+<style lang="scss">
+  @use "../../../scss/colors" as colors;
+  .latest-blogposts {
+    list-style: none;
+    padding: 0;
+
+    a {
+      text-decoration: none;
+      color: colors.$foreground;
+    }
+  }
+
+  .blog-post {
+    margin-bottom: 1rem;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 3px;
+    border-color: gray;
+    background-color: gainsboro;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+  }
+
+  .blog-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1rem;
+    font-size: 0.8rem;
+  }
+</style>
+<ContentPage {meta}>
+  <Breadcrumbs links={links} />
+  <h1>Blog</h1>
+  <ul class="latest-blogposts">
+    {
+      pages.map((p) => (
+        <li>
+          <a class="blog-post" href={p.path} title={p.data.title}>
+            <h2>{p.data.title}</h2>
+            <div>{p.data.description}</div>
+            <br />
+            <div class="blog-meta">
+              <div>
+                {t("blog.created-at")} {p.data.publishDate.toLocaleDateString()}
+              </div>
+              <div>
+                {t("blog.created-by")} {p.data.author}
+              </div>
+            </div>
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</ContentPage>

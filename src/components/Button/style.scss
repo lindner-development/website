@@ -1,0 +1,53 @@
+@use "../../scss/colors" as colors;
+
+.lindner-button {
+  padding: 1rem 3rem;
+  border-style: none;
+  border-radius: 4px;
+  font-size: 16pt;
+  font-weight: 600;
+  color: white;
+  transition: all 200ms;
+  cursor: pointer;
+  text-decoration: none;
+
+  &__primary {
+    background-color: colors.$primary-500;
+
+    &:hover {
+      background-color: colors.$primary-600;
+    }
+  }
+
+  &__secondary {
+    background-color: colors.$secondary-500;
+
+    &:hover {
+      background-color: colors.$secondary-600;
+    }
+  }
+
+  &__outline {
+    &.lindner-button__primary {
+      background-color: transparent;
+      border: 1px solid colors.$primary-500;
+      color: colors.$primary-500;
+
+      &:hover {
+        background-color: transparent;
+        border: 1px solid colors.$primary-600;
+        color: colors.$primary-600;
+      }
+    }
+    &.lindner-button__secondary {
+      background-color: transparent;
+      border: 1px solid colors.$secondary-500;
+      color: colors.$secondary-500;
+      &:hover {
+        background-color: transparent;
+        border: 1px solid colors.$secondary-600;
+        color: colors.$secondary-600;
+      }
+    }
+  }
+}

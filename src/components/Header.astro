@@ -1,0 +1,28 @@
+---
+import "../scss/header.scss";
+import { NavigationRoot } from "./NewNavigation/NavigationRoot";
+import { NavigationItem } from "./NewNavigation/NavigationItem";
+import { useTranslations } from "../i18n/utils";
+
+const { language } = Astro.params;
+const baseUrl = `/${language ?? "en"}`;
+const t = useTranslations((language ?? "en") as "en" | "de");
+---
+
+<header>
+  <nav class="branding">
+    <a href={baseUrl}> <img src="/brand.svg" alt="Lindner IT Brand" /></a>
+  </nav>
+  <NavigationRoot client:load>
+    <NavigationItem
+      title={t("nav.grid-computing")}
+      href={`${baseUrl}/grid-computing`}
+    />
+    <NavigationItem
+      title={t("nav.software-development")}
+      href={`${baseUrl}/software-development`}
+    />
+    <NavigationItem title={t("nav.blog")} href={`${baseUrl}/blog`} />
+    <NavigationItem title={t("nav.about-us")} href={`${baseUrl}/about-us`} />
+  </NavigationRoot>
+</header>

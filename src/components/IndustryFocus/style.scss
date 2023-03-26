@@ -1,0 +1,15 @@
+.industry-focus-cards {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  align-content: center;
+  padding: 0;
+  gap: 1rem;
+  list-style: none;
+
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+  }
+}

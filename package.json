@@ -1,0 +1,45 @@
+{
+  "name": "website",
+  "type": "module",
+  "version": "0.0.2",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/prefetch": "^0.1.2",
+    "@astrojs/sitemap": "^1.2.2",
+    "@astrojs/solid-js": "^2.1.0",
+    "@edgio/astro": "^6.1.4",
+    "@edgio/cli": "^7.0.9",
+    "@edgio/core": "^7.0.9",
+    "@edgio/devtools": "^7.0.9",
+    "@edgio/prefetch": "^7.0.9",
+    "@kobalte/core": "^0.7.4",
+    "@modular-forms/solid": "^0.11.0",
+    "@nanostores/persistent": "^0.7.0",
+    "@nanostores/solid": "^0.3.2",
+    "astro": "^2.3.0",
+    "astro-compress": "^1.1.39",
+    "astro-critters": "^1.1.32",
+    "astro-rome": "^0.1.12",
+    "autoprefixer": "^10.4.14",
+    "clarity-js": "^0.7.6",
+    "firebase": "^9.20.0",
+    "nanostores": "^0.7.4",
+    "postcss": "^8.4.23",
+    "postcss-csso": "^6.0.1",
+    "sass": "^1.62.0",
+    "solid-icons": "^1.0.4",
+    "solid-js": "1.6.12"
+  },
+  "devDependencies": {
+    "@vite-pwa/astro": "^0.0.4",
+    "vite-plugin-pwa": "^0.14.7",
+    "workbox-window": "^6.5.4"
+  }
+}

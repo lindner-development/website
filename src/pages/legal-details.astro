@@ -1,0 +1,131 @@
+---
+import {
+  Breadcrumbs,
+  BreadcrumbLink,
+} from "../components/Breadcrumbs/Breadcrumbs";
+import ContentPage from "../components/ContentPage.astro";
+import { MetaBuilder } from "../meta";
+
+const metaBuilder = new MetaBuilder();
+metaBuilder.title("Lindner IT - Impressum");
+metaBuilder.description("Impressum der Lindner IT UG (haftungsbeschränkt)");
+metaBuilder.keywords([
+  "Lindner IT",
+  "Enterprise-Software",
+  "Impressum",
+  "Legal Details",
+]);
+metaBuilder.revisedAt(new Date());
+metaBuilder.jsonld({
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    {
+      "@type": "ListItem",
+      position: 1,
+      name: "Über uns",
+      item: "https://lindnerit.io/ueber-uns",
+    },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: "Rechtliches",
+      item: "https://lindnerit.io/legal",
+    },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: "Impressum",
+      item: "https://lindnerit.io/legal-details",
+    },
+  ],
+});
+
+const links: BreadcrumbLink[] = [
+  {
+    href: "/ueber-uns",
+    title: "Über uns",
+  },
+  {
+    href: "/legal",
+    title: "Rechtliches",
+  },
+  {
+    href: "/legal-details",
+    title: "Impressum",
+    isCurrent: true,
+  },
+];
+const meta = metaBuilder.create();
+---
+
+<ContentPage {meta} noCookieDialog={true}>
+  <Breadcrumbs links={links} />
+  <h1>Impressum</h1>
+  <h2>
+    Angaben gemäß <a
+      href="https://www.gesetze-im-internet.de/tmg/__5.html"
+      title="Paragraf 5; Telemediengesetz (TMG)">§&nbsp;5&nbsp;TMG</a
+    >
+  </h2>
+  <div>
+    Lindner IT UG (haftungsbeschränkt)<br />
+    Holzbronn 12<br />
+    97999 Igersheim<br /><br />
+    <b>Vertreten durch:</b><br />
+    Geschäftsführer &ndash; Robin Lindner
+  </div>
+  <h2>Kontakt</h2>
+  <div>
+    Telefon: +49 (0) 7931 5636 - 150 <br />
+    Mobil: +49 (0) 162 319954<br />
+    {
+      /*Telefon: +49 162 319954<br />
+    Telefax: +49 7931 111-1<br />*/
+    }
+    E-Mail: info@lindnerit.io<br />
+  </div>
+  <h2>Handelsregister</h2>
+  Registernummer: HRB 745838<br />
+  Registergericht: Amtsgericht Ulm <small>(Zeughausgasse 14, 89073 Ulm)</small
+  ><br />
+  eingetragen seit 01.03.2023
+  <h2>Umsatzsteuer-ID</h2>
+  <div>
+    Umsatzsteuer-Identifikationsnummer gemäß <a
+      href="https://www.gesetze-im-internet.de/ustg_1980/__27a.html"
+      title="Paragraf 27a; Umsatzsteuergesetz (UStG)">§&nbsp;27a&nbsp;UStG</a
+    >:<br />
+    DE 359152052
+  </div>
+  <h2>Gewerbeanmeldung</h2>
+  Die Gewerbeanmeldung nach <a
+    href="https://www.gesetze-im-internet.de/gewo/__14.html"
+    title="Paragraf 14; Gewerbeordnung"
+    target="_blank">§ 14 GewO</a
+  > wurde mit Wirkung zum 01.03.2023 durch das Bürgermeisteramt Igersheim erteilt.
+  <h2>EU-Streitschlichtung</h2>
+  <div>
+    Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung
+    (OS) bereit: <a href="https://ec.europa.eu/consumers/odr/"
+      >https://ec.europa.eu/consumers/odr/</a
+    >.
+  </div>
+
+  <h2>Verbraucherstreitbeilegung</h2>
+  <div>
+    Die Angebote der Lindner IT UG (haftungsbeschränkt) sind ausschließlich für
+    juristische und natürliche Personen bestimmt, die im Rahmen ihrer
+    gewerblichen oder selbstständigen beruflichen Tätigkeit im Sinne des
+    <a
+      href="https://www.gesetze-im-internet.de/bgb/__13.html"
+      title="Paragraf 14; Bürgerliches Gesetzbuch (BGB)"
+      target="_blank">§&nbsp;14&nbsp;BGB</a
+    > handeln. Gemäß <a
+      href="https://www.gesetze-im-internet.de/bgb/__13.html"
+      title="Paragraf 13; Bürgerliches Gesetzbuch (BGB)"
+      target="_blank">§&nbsp;13&nbsp;BGB</a
+    > sind diese Angebote nicht für Verbraucher bestimmt. Daher lehnen wir eine Teilnahme
+    an einer Universalschlichtungsstelle oder Verbraucherstreitbeteiligung ab.
+  </div>
+</ContentPage>
