@@ -33,7 +33,7 @@ export const ThemeToggle = () => {
         }
     });
 
-    return <Button.Root class="lindner-theme-toggle" onClick={() => setTheme((t) => (t === "light" ? "dark" : "light"))}>
+    return <Button.Root class="lindner-theme-toggle" title="Toggle theme" onClick={() => setTheme((t) => (t === "light" ? "dark" : "light"))}>
         <div class="lindner-icon-container">
             <Presence>
                 {theme() === "light" &&

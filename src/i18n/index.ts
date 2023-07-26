@@ -36,7 +36,7 @@ export const data = {
         'index.yourpartner.title': 'Your Online Presence',
         'index.yourpartner.feature.gdpr.title': 'GDPR-Compliant',
         'index.yourpartner.feature.gdpr.description': 'As partners of raidboxes and IONOS, we ensure your hosting is GDPR-compliant. Ready to put your data protection worries at ease?',
-        'index.yourpartner.feature.gdpr.link': 'Learn More',
+        'index.yourpartner.feature.gdpr.link': 'Take a look',
 
         'index.yourpartner.feature.performance.title': 'Speed is the Name of the Game',
         'index.yourpartner.feature.performance.description': 'Harnessing the power of a Content Delivery Network (CDN), we deliver top-notch performance globally. Curious about how we achieve such breathtaking speed?',
@@ -48,7 +48,7 @@ export const data = {
 
         'index.yourpartner.feature.monitoring.title': '24/7 Monitoring',
         'index.yourpartner.feature.monitoring.description': 'If anything goes amiss, you\'ll be the first to know. Ready to rest easy knowing we’ve got your back round-the-clock?',
-        'index.yourpartner.feature.monitoring.link': 'Learn More',
+        'index.yourpartner.feature.monitoring.link': 'Take a look',
 
         'component.blogsection.title': 'Blog',
         'component.blogsection.titleDescription': 'Your Digital Companion',

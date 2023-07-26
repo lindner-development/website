@@ -3,6 +3,7 @@ import type { Meta } from "../meta";
 import { FloatingActionButtons } from "../components/FloatingActionButtons/FloatingActionButtons";
 import { CookieBanner } from "../components/CookieBanner/CookieBanner";
 import { CookieDialog } from "../components/CookieDialog/CookieDialog";
+
 const { language } = Astro.params;
 
 export interface Props {
@@ -11,19 +12,9 @@ export interface Props {
 }
 
 const { meta }: Props = Astro.props;
-
-let languageSelectorUrl: string | undefined = undefined;
-if (language != null) {
-  let url = new URL("/language-selector", Astro.url.origin);
-  url.searchParams.set(
-    "redirect_to",
-    Astro.url.pathname.replace(`/${language}/`, "")
-  );
-  languageSelectorUrl = url.toString();
-}
+const langTag = language == "de" ? "de" : "en";
 ---
 
-<></>
 <!--
 * ******************************************************* *
 *   _      _           _                   _____ _______  *
@@ -37,7 +28,8 @@ if (language != null) {
 * © Copyright Lindner IT 2023 | All rights reserved.      *                             
 * ******************************************************* *
 -->
-<html lang={language ?? "en"}>
+
+<html lang={langTag}>
   <head>
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -262,21 +254,31 @@ if (language != null) {
             <link
               rel="alternate"
               hreflang="en"
-              href={Astro.url.pathname.replace("/de/", "/en/")}
+              href={Astro.url.toString().replace("/de/", "/en/")}
+            />
+            <link
+              rel="alternate"
+              hreflang="x-default"
+              href={Astro.url.toString().replace("/de/", "/en/")}
             />
           )}
           {language == "en" && (
             <link
               rel="alternate"
               hreflang="de"
-              href={Astro.url.pathname.replace("/en/", "/de/")}
+              href={Astro.url.toString().replace("/en/", "/de/")}
             />
-          )}
-          {languageSelectorUrl && (
             <link
               rel="alternate"
               hreflang="x-default"
-              href={languageSelectorUrl}
+              href={Astro.url.toString()}
+            />
+          )}
+          {language && (
+            <link
+              rel="alternate"
+              hreflang={language}
+              href={Astro.url.toString()}
             />
           )}
         </>

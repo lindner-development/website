@@ -1,12 +1,13 @@
 {
   "name": "website",
   "type": "module",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
+    "test": "echo \"Error: no test specified\"",
     "astro": "astro"
   },
   "dependencies": {

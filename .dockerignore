@@ -1,3 +1,5 @@
 .vscode
 public
+node_modules
+dist
 .env
