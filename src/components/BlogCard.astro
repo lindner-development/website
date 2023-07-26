@@ -1,0 +1,73 @@
+---
+const { language } = Astro.params;
+import type { BlogPost } from "../contentful";
+const { post } = Astro.props;
+const blogPost: BlogPost = post;
+const asset = blogPost.image;
+---
+
+<style lang="scss">
+  .blog-card {
+    color: black;
+    text-decoration: none;
+
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    border-radius: 20px;
+    box-shadow: 0px 4px 9px #171a1f, 0px 0px 2px #171a1f;
+
+    width: 300px;
+    margin-left: 1rem;
+    margin-right: 1rem;
+
+    transition: all 0.2s ease-in-out;
+
+    &:hover {
+      transform: scale(1.05);
+      box-shadow: 0px 4px 9px #171a1f, 0px 0px 2px #171a1f;
+    }
+  }
+
+  .blog-card-image {
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+  }
+
+  .blog-card-content {
+    padding: 1rem;
+
+    h3 {
+      margin-top: 0;
+    }
+  }
+</style>
+<a
+  href=`/${language}/blog/${blogPost?.category?.fields?.slug ?? "uncategorized"}/${blogPost.slug}`
+  class="blog-card"
+>
+  <img
+    class="blog-card-image"
+    src={(asset?.fields?.file?.url as string)
+      ? (asset?.fields?.file?.url as string) + "?fm=webp"
+      : ""}
+    alt={(asset?.fields?.title as string) ?? "Placeholder"}
+  />
+  <div class="blog-card-content">
+    <div>Ihr Leitfaden</div>
+    <h3>{blogPost.title}</h3>
+    <p>
+      {
+        blogPost.metaDescription?.length > 20
+          ? blogPost.metaDescription.substring(0, 20) + "..."
+          : blogPost.metaDescription
+      }
+    </p>
+    <div class="blog-card-footer">
+      {blogPost?.category?.fields.displayName}
+    </div>
+  </div>
+</a>

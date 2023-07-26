@@ -1,0 +1,37 @@
+---
+import { Button } from "./Button/Button";
+import { useTranslations } from "../i18n";
+
+const { language } = Astro.params;
+const currentLanguage = language === "de" ? "de" : "en";
+const t = useTranslations(currentLanguage);
+---
+
+<style lang="scss">
+  @use "src/scss/typography";
+  @use "src/scss/colors";
+
+  .hook {
+    background-color: colors.$primary-600;
+    color: colors.$white;
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    border-radius: 20px;
+
+    h2 {
+      margin: 0;
+    }
+  }
+</style>
+<div class="hook">
+  <h2>{t("component.hooksection.title")}</h2>
+  <a href="mailto:info@lindnerit.io"
+    ><Button variant="secondary">
+      {t("component.hooksection.button") as string}
+    </Button></a
+  >
+</div>

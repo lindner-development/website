@@ -1,120 +1,119 @@
 ---
-export { getStaticPaths } from "../static-language-paths";
-import {
-  Breadcrumbs,
-  BreadcrumbLink,
-} from "../../components/Breadcrumbs/Breadcrumbs";
+import Footer from "../../components/Footer.astro";
+import Header from "../../components/Header.astro";
+import Heading from "../../components/Heading.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import lindner from "~/assets/lindner.jpg";
+import { Image } from "astro:assets";
 import { Button } from "../../components/Button/Button";
-import ContentPage from "../../components/ContentPage.astro";
-import { useTranslations } from "../../i18n/utils";
+import HookSection from "../../components/HookSection.astro";
+import { useTranslations } from "../../i18n";
 import { MetaBuilder } from "../../meta";
 
 const { language } = Astro.params;
-const t = useTranslations((language ?? "en") as "en" | "de");
+const currentLanguage = language === "de" ? "de" : "en";
+const t = useTranslations(currentLanguage);
 
 const metaBuilder = new MetaBuilder();
-metaBuilder.title(t("about-us.title"));
-metaBuilder.description(t("about-us.description"));
-metaBuilder.keywords(t("about-us.keywords"));
-metaBuilder.revisedAt(new Date());
-metaBuilder.jsonld({
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  itemListElement: [
-    {
-      "@type": "ListItem",
-      position: 1,
-      name: t("about-us.h1"),
-      item: `https://lindnerit.io/${language}/about-us`,
-    },
-  ],
-});
-
-const links: BreadcrumbLink[] = [
-  {
-    href: `/${language}/`,
-    title: "Lindner IT",
-  },
-  {
-    href: `/${language}/about-us`,
-    title: t("about-us.h1"),
-    isCurrent: true,
-  },
-];
+metaBuilder.title(t("aboutus.meta.title") as string);
+metaBuilder.description(
+  t("aboutus.meta.description") as string,
+  t("aboutus.meta.description") as string,
+  t("aboutus.meta.openGraphDescription") as string,
+  t("aboutus.meta.twitterDescription") as string
+);
+metaBuilder.keywords(t("aboutus.meta.keywords") as unknown as string[]);
 const meta = metaBuilder.create();
 ---
 
 <style lang="scss">
-  li {
-    list-style-position: inside;
+  @use "src/scss/typography";
+  @use "src/scss/colors";
+
+  article {
+    margin: 0 6rem;
   }
 
-  section {
-    margin-top: 1rem;
+  h2 {
+    margin-top: 0;
   }
 
-  .contact-button {
-    margin-top: 1rem;
+  #aboutus {
+    padding: 1rem 6rem;
+
+    @media screen and (max-width: 768px) {
+      padding: 1rem 3rem;
+    }
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12rem;
+
+    & > div {
+      flex: 1 1 0;
+    }
+
+    .about-us-image {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      max-width: 50%;
+      height: auto;
+    }
+
+    @media screen and (max-width: 768px) {
+      flex-direction: column;
+      gap: 0;
+      .about-us-image {
+        display: none;
+      }
+    }
+  }
+
+  .platform-adversiting {
+    margin-top: 0.4rem;
+    font-size: typography.$font-size-xs;
   }
 </style>
-<ContentPage {meta}>
-  <Breadcrumbs links={links} />
-  <h1>{t("about-us.h1")}</h1>
-  <p>{t("about-us.h1.subheading")}</p>
-
-  <section id="mission">
-    <h2>{t("about-us.mission.h2")}</h2>
-    <p>{t("about-us.mission.content")}</p>
-  </section>
-
-  <section id="founder">
-    <h2>{t("about-us.founder.h2")}</h2>
-    <p>{t("about-us.founder.content")}</p>
-  </section>
-
-  <section id="values">
-    <h2>{t("about-us.values.h2")}</h2>
-    <p>{t("about-us.values.content")}</p>
-  </section>
-
-  <section id="why">
-    <h2>{t("about-us.why.h2")}</h2>
-    <ul>
-      <li>
-        <strong>{t("about-us.why.expertise.title")}:</strong>
-        {t("about-us.why.expertise.content")}
-      </li>
-      <li>
-        <strong>{t("about-us.why.innovation.title")}:</strong>
-        {t("about-us.why.innovation.content")}
-      </li>
-      <li>
-        <strong>{t("about-us.why.customer-focus.title")}:</strong>
-        {t("about-us.why.customer-focus.content")}
-      </li>
-      <li>
-        <strong>{t("about-us.why.flexibility.title")}:</strong>
-        {t("about-us.why.flexibility.content")}
-      </li>
-    </ul>
-  </section>
-
-  <section id="contact">
-    <h2>{t("about-us.contact.h2")}</h2>
-    <p>
-      {t("about-us.contact.content")}
-    </p>
-    <a
-      title={t("about-us.contact.button")}
-      href="mailto:info@lindnerit.io?subject=Grid-Computing interest"
-    >
-      <Button
-        class="contact-button"
-        title={t("about-us.contact.button")}
-        variant="primary"
-      >
-        {t("about-us.contact.button")}
-      </Button>
-    </a>
-  </section>
-</ContentPage>
+<BaseLayout {meta}>
+  <main>
+    <Header />
+    <article>
+      <Heading headingType="h1">
+        <div slot="description">
+          {t("aboutus.content.titleDescription")}
+        </div>
+        {t("aboutus.content.title")}
+      </Heading>
+      <section id="aboutus">
+        <Image
+          class="aboutus-image"
+          height="480"
+          src={lindner}
+          alt="Avatar of Robin Lindner"
+        />
+        <div>
+          <h2>{t("aboutus.content.headline")}</h2>
+          <div>
+            <p>
+              {t("aboutus.content.description")}
+            </p>
+          </div>
+          <div>
+            <a href="https://deeprobin.de/" target="_blank">
+              <Button variant="secondary">
+                {t("aboutus.content.button") as string}
+              </Button>
+            </a>
+          </div>
+        </div>
+      </section>
+      <section id="hook">
+        <HookSection />
+      </section>
+    </article>
+    <Footer />
+  </main>
+</BaseLayout>

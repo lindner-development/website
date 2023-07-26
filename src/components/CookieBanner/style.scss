@@ -1,0 +1,50 @@
+.lindner-cookie-banner {
+  display: none;
+  &--open {
+    display: flex;
+  }
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: white;
+  padding: 2rem;
+  gap: 2rem;
+  box-shadow: 0px 4px 9px #171a1f, 0px 0px 2px #171a1f;
+  z-index: 40;
+
+  &__buttons {
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+    width: 100%;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+  }
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+
+    &__content {
+      flex-direction: column;
+      gap: 1rem;
+    }
+  }
+
+  @media (max-width: 500px) {
+    &__buttons {
+      flex-direction: column;
+      gap: 1rem;
+    }
+  }
+}

@@ -1,11 +1,7 @@
 {
-  "extends": "astro/tsconfigs/strict",
+  "extends": "astro/tsconfigs/strictest",
   "compilerOptions": {
     "jsx": "preserve",
-    "jsxImportSource": "solid-js",
-    "types": [
-      "vite-plugin-pwa/client",
-      "vite-plugin-pwa/info",
-    ]
+    "jsxImportSource": "solid-js"
   }
 }

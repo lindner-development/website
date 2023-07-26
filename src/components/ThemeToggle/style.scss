@@ -1,0 +1,31 @@
+@use "src/scss/typography";
+@use "src/scss/colors";
+
+.lindner-theme-toggle {
+  border-radius: 50%;
+  padding: 0.5rem;
+  border-style: none;
+  border-width: 0;
+  color: colors.$primary-500;
+  background: transparent;
+  transition: all 500ms;
+  cursor: pointer;
+  aspect-ratio: 1 / 1;
+
+  &:hover {
+    color: colors.$primary-400;
+    background-color: colors.$primary-150;
+  }
+}
+
+.lindner-icon-container {
+  position: relative;
+  width: 24px;
+  height: 24px;
+
+  .lindner-icon {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+}

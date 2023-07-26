@@ -1,0 +1,40 @@
+@use "src/scss/typography";
+@use "src/scss/colors";
+
+header {
+  display: flex;
+  flex-direction: row;
+  padding: 1rem 6rem;
+  justify-content: space-between;
+}
+
+.lindner-buttons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+}
+
+.lindner-branding {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+@media screen and (max-width: 768px) {
+  header {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  .lindner-branding {
+    margin-bottom: 1rem;
+  }
+
+  .lindner-buttons {
+    display: none;
+  }
+}

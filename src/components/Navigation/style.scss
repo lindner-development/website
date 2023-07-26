@@ -1,0 +1,13 @@
+.lindner-navigation {
+  & > ul {
+    list-style: none;
+    list-style-position: inside;
+    display: flex;
+    flex-direction: row;
+    padding: 0;
+
+    @media screen and (max-width: 768px) {
+      flex-direction: column;
+    }
+  }
+}

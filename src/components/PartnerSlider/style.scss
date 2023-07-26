@@ -1,0 +1,35 @@
+.lindner-friends-carousel {
+  overflow: hidden;
+}
+
+.lindner-friends-track {
+  display: flex;
+  animation: scroll 40s linear infinite;
+  width: calc(
+    250px * 6
+  ); /* Anzahl der Logos (jetzt doppelt) x Breite jedes Logos */
+}
+
+.lindner-friends-slide {
+  width: 250px;
+  height: 70px;
+  flex-shrink: 0;
+  //margin-right: 12px;
+  margin: 32px;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+}
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(
+      calc(-250px * 6)
+    ); /* bewegen Sie nur die Hälfte der Strecke */
+  }
+}

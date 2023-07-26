@@ -1,0 +1,146 @@
+---
+import Footer from "../../components/Footer.astro";
+import Header from "../../components/Header.astro";
+import Heading from "../../components/Heading.astro";
+import { useTranslations } from "../../i18n";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { MetaBuilder } from "../../meta";
+
+const { language } = Astro.params;
+const currentLanguage = language === "de" ? "de" : "en";
+const t = useTranslations(currentLanguage);
+
+const metaBuilder = new MetaBuilder();
+metaBuilder.title(t("legalDetails.meta.title") as string);
+metaBuilder.description(
+  t("legalDetails.meta.description") as string,
+  t("legalDetails.meta.description") as string,
+  t("legalDetails.meta.openGraphDescription") as string,
+  t("legalDetails.meta.twitterDescription") as string
+);
+metaBuilder.keywords(t("legalDetails.meta.keywords") as unknown as string[]);
+const meta = metaBuilder.create();
+---
+
+<style lang="scss">
+  @use "src/scss/typography";
+  @use "src/scss/colors";
+
+  article {
+    margin: 0 6rem;
+  }
+
+  h2 {
+    margin-top: 0;
+  }
+
+  .blocks {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 1rem;
+  }
+
+  @media (max-width: 600px) {
+    .blocks {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .block {
+    border-radius: 20px;
+    padding: 1rem;
+    &.block-secondary {
+      background-color: colors.$secondary-100;
+    }
+    &.block-tertiary {
+      background-color: colors.$tertiary-200;
+    }
+  }
+
+  h3 {
+    margin-bottom: 0;
+  }
+</style>
+<BaseLayout {meta}>
+  <main>
+    <Header />
+    <article>
+      <Heading headingType="h1">
+        <div slot="description">
+          {t("legalDetails.content.titleDescription")}
+        </div>
+        {t("legalDetails.content.title")}
+      </Heading>
+
+      <div class="blocks">
+        <div class="block block-secondary">
+          <h2>{t("legalDetails.content.companyDetailsTitle")}</h2>
+          <div>
+            <div>Lindner IT UG (haftungsbeschränkt)</div>
+            <div>Holzbronn 12</div>
+            <div>97999 Igersheim</div>
+            <br />
+            <h3>{t("legalDetails.content.representedBy")}:</h3>
+            <div>
+              {t("legalDetails.content.representedByTitle")} &ndash; Robin Lindner
+            </div>
+          </div>
+        </div>
+        <div class="block block-tertiary">
+          <h2>{t("legalDetails.content.contactTitle")}</h2>
+          <div>
+            <div>
+              {t("legalDetails.content.contactPhone")}: +49 (0) 7931 5636 - 150
+            </div>
+            <div>{t("legalDetails.content.contactPhone2")}</div>
+            <br />
+            <div>{t("legalDetails.content.mail")}: legal@lindnerit.io</div>
+          </div>
+        </div>
+        <div class="block block-tertiary">
+          <h2>{t("legalDetails.content.commercialRegisterTitle")}</h2>
+          <div>
+            <div>{t("legalDetails.content.registerNumber")}: HRB 745838</div>
+            <div>
+              {t("legalDetails.content.registerCourt")}: Amtsgericht Ulm
+            </div>
+            <div>{t("legalDetails.content.registerDate")}: 01.03.2023</div>
+          </div>
+        </div>
+        <div class="block block-secondary">
+          <h2>{t("legalDetails.content.vatIdTitle")}</h2>
+          <div>
+            <div>
+              {t("legalDetails.content.vatId")}: DE359152052
+            </div>
+          </div>
+        </div>
+        <div class="block block-secondary">
+          <h2>{t("legalDetails.content.euDisputeResolutionTitle")}</h2>
+          <div>
+            <div>
+              {t("legalDetails.content.euDisputeResolution")}:
+            </div>
+            <div>
+              <a
+                target="_blank"
+                rel="noreferrer nofollow noopener"
+                href="https://ec.europa.eu/consumers/odr"
+                >https://ec.europa.eu/consumers/odr</a
+              >
+            </div>
+          </div>
+        </div>
+        <div class="block block-tertiary">
+          <h2>{t("legalDetails.content.consumerDisputeResolutionTitle")}</h2>
+          <div>
+            <p>
+              {t("legalDetails.content.consumerDisputeResolution")}
+            </p>
+          </div>
+        </div>
+      </div>
+    </article>
+    <Footer />
+  </main>
+</BaseLayout>

@@ -1,0 +1,11 @@
+@use "colors";
+
+@mixin light-theme {
+  --foreground: #000000;
+  --background: #ffffff;
+}
+
+@mixin dark-theme {
+  --foreground: #ffffff;
+  --background: #303952;
+}

@@ -1,0 +1,96 @@
+---
+const { variant, mode } = Astro.props;
+---
+
+<style lang="scss">
+    @use "src/scss/typography";
+    @use "src/scss/colors";
+
+    .lindner-feature-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        border-radius: 20px;
+        padding: 32px;
+        //width: 100%;
+        box-sizing: border-box;
+
+        flex-grow: 1;
+
+        margin: 0.5rem;
+        &--small {
+            flex-basis: calc(33.33% - 1rem);
+        }
+
+        &--large {
+            flex-basis: calc(66.66% - 1rem);
+        }
+
+        h2 {
+            font-size: typography.$font-size-subheading;
+            color: colors.$neutral-700;
+            margin: 0;
+        }
+    }
+
+    .lindner-feature-description {
+        font-size: typography.$font-size-medium;
+        color: colors.$neutral-700;
+    }
+
+    .lindner-feature-link-container {
+        font-size: typography.$font-size-l;
+        color: colors.$neutral-700;
+    }
+
+    .lindner-feature-container--primary {
+        background-color: colors.$primary-200;
+        .lindner-feature-link-container a {
+            color: colors.$primary-600;
+
+            &:hover {
+                color: colors.$primary-700;
+            }
+        }
+    }
+
+    .lindner-feature-container--secondary {
+        background-color: colors.$secondary-200;
+        .lindner-feature-link-container a {
+            color: colors.$secondary-600;
+
+            &:hover {
+                color: colors.$secondary-700;
+            }
+        }
+    }
+
+    .lindner-feature-container--tertiary {
+        background-color: colors.$tertiary-200;
+        .lindner-feature-link-container a {
+            color: colors.$tertiary-600;
+
+            &:hover {
+                color: colors.$tertiary-700;
+            }
+        }
+    }
+</style>
+<div
+    class:list={{
+        "lindner-feature-container": true,
+        "lindner-feature-container--primary": variant === "primary",
+        "lindner-feature-container--secondary": variant === "secondary",
+        "lindner-feature-container--tertiary": variant === "tertiary",
+        "lindner-feature-container--small": mode === "small",
+        "lindner-feature-container--large": mode === "large",
+    }}
+>
+    <div>
+        <h2><slot name="title" /></h2>
+        <p class="lindner-feature-description"><slot /></p>
+    </div>
+    <div class="lindner-feature-link-container">
+        <slot name="link" />
+    </div>
+</div>

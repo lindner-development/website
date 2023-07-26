@@ -1,0 +1,32 @@
+@use "src/scss/typography";
+@use "src/scss/colors";
+
+.lindner-navigation-link {
+  &__root {
+    font-family: typography.$font-family;
+    font-size: typography.$font-size-m;
+    color: colors.$foreground;
+    border-bottom-style: solid;
+    border-bottom-color: colors.$background;
+    border-bottom-width: 2px;
+    transition: all 500ms;
+
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    cursor: pointer;
+
+    &[aria-current="true"] {
+      // TODO: some other black
+    }
+
+    &:hover {
+      color: colors.$secondary-500;
+      border-bottom-color: colors.$secondary-500;
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    margin: 0.5rem 1rem;
+    font-size: typography.$font-size-s;
+  }
+}

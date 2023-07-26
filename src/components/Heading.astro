@@ -1,0 +1,105 @@
+---
+const {
+  headingType,
+}: { headingType?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | undefined } =
+  Astro.props;
+
+const ht: "h1" | "h2" | "h3" | "h4" | "h5" | "h6" = headingType ?? "h2";
+---
+
+<style lang="scss">
+  @use "src/scss/typography";
+  @use "src/scss/colors";
+
+  .lindner-heading {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      font-size: typography.$font-size-heading;
+      margin: 0;
+      font-weight: 900;
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    .lindner-heading {
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-size: typography.$font-size-big;
+      }
+    }
+  }
+
+  .lindner-heading-description {
+    font-size: typography.$font-size-m;
+    color: colors.$neutral-700;
+  }
+
+  .lindner-heading-underline {
+    max-height: 24px;
+    display: block;
+    fill: colors.$secondary-400;
+    color: colors.$secondary-400;
+  }
+</style>
+<div class={`lindner-heading`}>
+  <div class="lindner-heading-description"><slot name="description" /></div>
+
+  {
+    ht == "h1" && (
+      <h1>
+        <slot />
+      </h1>
+    )
+  }
+  {
+    ht == "h2" && (
+      <h2>
+        <slot />
+      </h2>
+    )
+  }
+  {
+    ht == "h3" && (
+      <h3>
+        <slot />
+      </h3>
+    )
+  }
+  {
+    ht == "h4" && (
+      <h4>
+        <slot />
+      </h4>
+    )
+  }
+  {
+    ht == "h5" && (
+      <h5>
+        <slot />
+      </h5>
+    )
+  }
+  {
+    ht == "h6" && (
+      <h6>
+        <slot />
+      </h6>
+    )
+  }
+
+  <img
+    aria-hidden="true"
+    src="/underline.svg"
+    width="242"
+    height="24"
+    class="lindner-heading-underline"
+  />
+</div>

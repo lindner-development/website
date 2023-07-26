@@ -1,53 +1,82 @@
-@use "../../scss/colors" as colors;
+@use "src/scss/typography";
+@use "src/scss/colors";
 
 .lindner-button {
-  padding: 1rem 3rem;
-  border-style: none;
-  border-radius: 4px;
-  font-size: 16pt;
-  font-weight: 600;
   color: white;
-  transition: all 200ms;
+  transition: all 430ms;
+  font-family: typography.$font-family;
+  font-size: typography.$font-size-m;
+  border-radius: 18px;
+  border-style: solid;
+  border-width: 1px;
+  padding: 8px 24px;
   cursor: pointer;
-  text-decoration: none;
 
-  &__primary {
+  &-primary {
     background-color: colors.$primary-500;
-
+    border-color: colors.$primary-500;
     &:hover {
-      background-color: colors.$primary-600;
+      background-color: colors.$primary-400;
+      border-color: colors.$primary-400;
     }
   }
 
-  &__secondary {
+  &-light {
+    background-color: white;
+    border-color: white;
+    color: black;
+    &:hover {
+      background-color: gainsboro;
+      border-color: gainsboro;
+      color: black;
+    }
+  }
+
+  &-primary-outline {
+    background-color: white;
+    border-color: colors.$primary-500;
+    color: black;
+    &:hover {
+      background-color: white;
+      border-color: colors.$primary-400;
+    }
+  }
+
+  &-secondary {
     background-color: colors.$secondary-500;
-
+    border-color: colors.$secondary-500;
+    color: black;
     &:hover {
-      background-color: colors.$secondary-600;
+      background-color: colors.$secondary-400;
+      border-color: colors.$secondary-400;
     }
   }
 
-  &__outline {
-    &.lindner-button__primary {
-      background-color: transparent;
-      border: 1px solid colors.$primary-500;
-      color: colors.$primary-500;
-
-      &:hover {
-        background-color: transparent;
-        border: 1px solid colors.$primary-600;
-        color: colors.$primary-600;
-      }
+  &-secondary-outline {
+    background-color: white;
+    border-color: colors.$secondary-500;
+    color: black;
+    &:hover {
+      background-color: white;
+      border-color: colors.$secondary-400;
     }
-    &.lindner-button__secondary {
-      background-color: transparent;
-      border: 1px solid colors.$secondary-500;
-      color: colors.$secondary-500;
-      &:hover {
-        background-color: transparent;
-        border: 1px solid colors.$secondary-600;
-        color: colors.$secondary-600;
-      }
+  }
+
+  &-tertiary {
+    background-color: colors.$tertiary-500;
+    border-color: colors.$tertiary-500;
+    &:hover {
+      background-color: colors.$tertiary-400;
+      border-color: colors.$tertiary-400;
+    }
+  }
+  &-tertiary-outline {
+    background-color: white;
+    border-color: colors.$tertiary-500;
+    color: black;
+    &:hover {
+      background-color: white;
+      border-color: colors.$tertiary-400;
     }
   }
 }

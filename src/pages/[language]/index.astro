@@ -1,106 +1,192 @@
 ---
-export { getStaticPaths } from "../static-language-paths";
+import Header from "../../components/Header.astro";
+import Hero from "../../components/Hero.astro";
+import Heading from "../../components/Heading.astro";
+import { Button } from "../../components/Button/Button";
+import FeatureContainer from "../../components/FeatureContainer.astro";
+import BlogSection from "../../components/BlogSection.astro";
+import HookSection from "../../components/HookSection.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
 
-const { language } = Astro.params;
-const t = useTranslations((language ?? "en") as "en" | "de");
-
-import BasePage from "../../components/BasePage.astro";
-import IndustryFocus from "../../components/IndustryFocus/IndustryFocus";
-import { LandingGrid } from "../../components/LandingGrid/LandingGrid";
-import { useTranslations } from "../../i18n/utils";
+import { Image } from "astro:assets";
+import aboutUsImage from "~/assets/shutterstock_792913780_cropped.jpg";
+import Footer from "../../components/Footer.astro";
+import { useTranslations } from "../../i18n";
 import { MetaBuilder } from "../../meta";
 
-const metaBuilder = new MetaBuilder();
-metaBuilder.title(t("index.title"));
-metaBuilder.description(t("index.description"));
-metaBuilder.keywords(t("index.keywords"));
-metaBuilder.revisedAt(new Date());
-metaBuilder.jsonld({
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  name: "Lindner IT",
-  legalName: "Lindner IT UG (haftungsbeschränkt)",
-  url: "https://lindnerit.io",
-  logo: "https://lindnerit.io/brand.svg",
-  sameAs: [
-    "https://www.linkedin.com/company/lindner-it/",
-    "https://www.instagram.com/lindner.it",
-    "https://www.youtube.com/channel/UCx4mH0QbEu0ijbjh7CJoRUQ",
-    "https://www.youtube.com/@lindnerit",
-  ],
-  address: {
-    "@type": "PostalAddress",
-    streetAddress: "Holzbronn 12",
-    postalCode: "97999",
-    addressLocality: "Igersheim",
-    addressCountry: "DE",
-    email: "info@lindnerit.io",
-    telephone: "+49 162 3199554",
-  },
-  founder: {
-    "@type": "Person",
-    name: "Robin Lindner",
-    gender: "male",
-    givenName: "Robin Dominik",
-    familyName: "Lindner",
-    birthDate: new Date("2004-04-02").toISOString(),
-  },
-});
-metaBuilder.jsonld({
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  url: "https://lindnerit.io",
-});
+const { language } = Astro.params;
+const currentLanguage = language === "de" ? "de" : "en";
+const t = useTranslations(currentLanguage);
 
+const metaBuilder = new MetaBuilder();
+metaBuilder.title(t("index.meta.title") as string);
+metaBuilder.description(
+  t("index.meta.description") as string,
+  t("index.meta.description") as string,
+  t("index.meta.openGraphDescription") as string,
+  t("index.meta.twitterDescription") as string
+);
+metaBuilder.keywords(t("index.meta.keywords") as unknown as string[]);
 const meta = metaBuilder.create();
 ---
 
 <style lang="scss">
-  @use "../../scss/colors" as colors;
-  .page {
+  #above-the-fold {
+    height: 100vh;
+    max-height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    width: 100%;
-  }
-  .hero-page {
-    padding: 0 2rem;
-  }
-  .background {
-    background: #d9d9d9;
-    clip-path: polygon(56% 38%, 43% 100%, 0 100%, 0 0);
-    position: absolute;
-    width: 100vw;
-    height: 100vh;
-    top: 0;
-    left: 0;
     margin: 0;
-    z-index: -1;
   }
 
-  .industry-focus-cards {
+  .content {
+    padding: 1rem 6rem;
+
+    @media screen and (max-width: 768px) {
+      padding: 1rem 3rem;
+    }
+  }
+
+  #about-us {
+    margin: 6rem 0;
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
+    gap: 12rem;
+
+    & > div {
+      flex: 1 1 0;
+    }
+
+    .about-us-image {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      max-width: 50%;
+      height: auto;
+    }
+
+    @media screen and (max-width: 768px) {
+      flex-direction: column;
+      gap: 0;
+      .about-us-image {
+        display: none;
+      }
+    }
+  }
+
+  #your-partner {
+    margin: 6rem 0;
+    display: flex;
+    flex-direction: column;
+
+    a,
+    a:link {
+      color: black;
+    }
+  }
+
+  .feature-collection {
+    display: flex;
     flex-wrap: wrap;
-    gap: 2rem;
-    margin-top: 2rem;
-    margin-bottom: 2rem;
   }
 </style>
-<BasePage meta={meta}>
-  <div class="background"></div>
-  <div class="hero-page">
-    <h1>{t("index.welcome")}</h1>
-    <p>{t("index.subwelcome")}</p>
-    <br />
-    <LandingGrid language={language ?? "en"} />
-  </div>
-  <!--<section id="industry-focus" class="page">
-    <h3>branchenübergreifende Entwicklung</h3>
-    <IndustryFocus />
-  </section>-->
-</BasePage>
+<BaseLayout {meta}>
+  <section id="above-the-fold">
+    <Header />
+    <Hero />
+  </section>
+  <article class="content">
+    <section id="about-us">
+      <div>
+        <Heading>
+          <div slot="description">{t("index.aboutus.titleDescription")}</div>
+          {t("index.aboutus.title")}
+        </Heading>
+        <p>
+          {t("index.aboutus.description")}
+        </p>
+        <a href={`/${currentLanguage}/about-us/`} rel="prefetch"
+          ><Button variant="primary" outline>
+            {t("index.aboutus.button") as string}
+          </Button></a
+        >
+      </div>
+      <Image class="about-us-image" src={aboutUsImage} alt="About us" />
+    </section>
+    <section id="your-partner">
+      <Heading>
+        <div slot="description">{t("index.yourpartner.titleDescription")}</div>
+        {t("index.yourpartner.title")}
+      </Heading>
+      <div class="feature-collection">
+        <FeatureContainer
+          mode="small"
+          class="feature-container"
+          variant="tertiary"
+        >
+          <span slot="title">{t("index.yourpartner.feature.gdpr.title")}</span>
+          <span>{t("index.yourpartner.feature.gdpr.description")}</span>
+          <a href={`/${currentLanguage}/web-design/`} slot="link"
+            >{t("index.yourpartner.feature.gdpr.link")}</a
+          >
+        </FeatureContainer>
+        <FeatureContainer
+          mode="large"
+          class="feature-container"
+          variant="primary"
+        >
+          <span slot="title"
+            >{t("index.yourpartner.feature.performance.title")}</span
+          >
+          <span>{t("index.yourpartner.feature.performance.description")}</span>
+          <a href={`/${currentLanguage}/web-design/`} slot="link"
+            >{t("index.yourpartner.feature.performance.link")}</a
+          >
+        </FeatureContainer>
+        <FeatureContainer
+          mode="large"
+          class="feature-container"
+          variant="primary"
+        >
+          <span slot="title"
+            >{t("index.yourpartner.feature.perfectMatch.title")}</span
+          >
+          <span>{t("index.yourpartner.feature.perfectMatch.description")}</span>
+          <a href={`/${currentLanguage}/web-design/`} slot="link"
+            >{t("index.yourpartner.feature.perfectMatch.link")}</a
+          >
+        </FeatureContainer>
+        <FeatureContainer
+          mode="small"
+          class="feature-container"
+          variant="secondary"
+        >
+          <span slot="title"
+            >{t("index.yourpartner.feature.monitoring.title")}</span
+          >
+          <span>{t("index.yourpartner.feature.monitoring.description")}</span>
+          <a href={`/${currentLanguage}/web-design/`} rel="prefetch" slot="link"
+            >{t("index.yourpartner.feature.monitoring.link")}</a
+          >
+        </FeatureContainer>
+      </div>
+    </section>
+    {
+      /* 
+		<div>
+			<h2>Unsere Partner & Kunden</h2>
+			<PartnerSlider />
+		</div>
+	*/
+    }
+    <section id="blog">
+      <BlogSection />
+    </section>
+    <section id="hook">
+      <HookSection />
+    </section>
+  </article>
+  <Footer />
+</BaseLayout>

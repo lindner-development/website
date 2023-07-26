@@ -1,0 +1,52 @@
+---
+import { getImage } from "astro:assets";
+import hero from "~/assets/hero.jpg";
+import { Button } from "./Button/Button";
+import { useTranslations } from "../i18n";
+const optimizedHero = await getImage({
+  src: hero,
+  format: "webp",
+  quality: 80,
+});
+
+const { language } = Astro.params;
+const currentLanguage = language === "de" ? "de" : "en";
+const t = useTranslations(currentLanguage);
+---
+
+<style>
+  .lindner-hero {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #222c97ff;
+    background-size: cover;
+    height: 100%;
+    color: white;
+    padding: 3rem;
+  }
+
+  .buttons {
+    display: flex;
+    gap: 0.3rem;
+  }
+</style>
+<div
+  class="lindner-hero"
+  style={`background-image: url(${optimizedHero.src});`}
+>
+  <h1>{t("index.hero.title")}</h1>
+  <p>{t("index.hero.description")}</p>
+
+  <div class="buttons">
+    <a href={`/${currentLanguage}/software-development`} rel="prefetch"
+      ><Button variant="primary">{t("index.hero.button1") as string}</Button></a
+    >
+    <a href={`/${currentLanguage}/web-design`} rel="prefetch"
+      ><Button variant="primary">
+        {t("index.hero.button2") as string}?
+      </Button></a
+    >
+  </div>
+</div>

@@ -1,28 +1,55 @@
 ---
-import "../scss/header.scss";
-import { NavigationRoot } from "./NewNavigation/NavigationRoot";
-import { NavigationItem } from "./NewNavigation/NavigationItem";
-import { useTranslations } from "../i18n/utils";
+import { PageHeader } from "./PageHeader/PageHeader";
+import { Navigation } from "./Navigation/Navigation";
+import { Button } from "./Button/Button";
+import { ThemeToggle } from "./ThemeToggle/ThemeToggle";
+import { NavigationLink } from "./NavigationLink/NavigationLink";
+import { useTranslations } from "../i18n";
 
 const { language } = Astro.params;
-const baseUrl = `/${language ?? "en"}`;
-const t = useTranslations((language ?? "en") as "en" | "de");
+const currentLanguage = language === "de" ? "de" : "en";
+const t = useTranslations(currentLanguage);
 ---
 
-<header>
-  <nav class="branding">
-    <a href={baseUrl}> <img src="/brand.svg" alt="Lindner IT Brand" /></a>
-  </nav>
-  <NavigationRoot client:load>
-    <NavigationItem
-      title={t("nav.grid-computing")}
-      href={`${baseUrl}/grid-computing`}
+<PageHeader language={language as string}>
+  <img
+    slot="branding"
+    width="119"
+    height="39"
+    src="/wordmark.svg"
+    alt="Lindner IT Branding"
+  />
+  <Navigation>
+    <NavigationLink
+      title={t("nav.home") as string}
+      href={`/${currentLanguage}/`}
+      current={true}
     />
-    <NavigationItem
-      title={t("nav.software-development")}
-      href={`${baseUrl}/software-development`}
+    <NavigationLink
+      title={t("nav.webDesign") as string}
+      href={`/${currentLanguage}/web-design/`}
+      current={false}
     />
-    <NavigationItem title={t("nav.blog")} href={`${baseUrl}/blog`} />
-    <NavigationItem title={t("nav.about-us")} href={`${baseUrl}/about-us`} />
-  </NavigationRoot>
-</header>
+    <NavigationLink
+      title={t("nav.softwareDevelopment") as string}
+      href={`/${currentLanguage}/software-development/`}
+      current={false}
+    />
+    <NavigationLink
+      title={t("nav.blog") as string}
+      href={`/${currentLanguage}/blog/`}
+      current={false}
+    />
+    <NavigationLink
+      title={t("nav.aboutUs") as string}
+      href={`/${currentLanguage}/about-us/`}
+      current={false}
+    />
+  </Navigation>
+  <Fragment slot="buttons">
+    <a href="mailto:info@lindnerit.io"
+      ><Button variant="primary">{t("nav.contact") as string}</Button></a
+    >
+    <ThemeToggle client:load />
+  </Fragment>
+</PageHeader>
