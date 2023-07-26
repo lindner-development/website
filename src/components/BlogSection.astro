@@ -1,0 +1,61 @@
+---
+import { BlogPost, BlogPostSkeleton, contentfulClient } from "../contentful";
+import BlogCard from "./BlogCard.astro";
+import { useTranslations } from "../i18n";
+const { language } = Astro.params;
+
+const entry = await contentfulClient.getEntries<BlogPostSkeleton>({
+  content_type: "blogPost",
+  locale: language == "de" ? "de" : "en-US",
+  limit: 3,
+});
+const blogPosts: BlogPost[] = entry.items.map((item) => item.fields);
+
+const currentLanguage = language === "de" ? "de" : "en";
+const t = useTranslations(currentLanguage);
+---
+
+<style lang="scss">
+  .blog-section {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    @media screen and (max-width: 768px) {
+      flex-direction: column;
+    }
+  }
+
+  .blog-section div:first-child {
+    flex: 1;
+  }
+
+  .blog-section div:last-child {
+    flex: 2;
+    display: flex;
+    flex-direction: row;
+    margin: 1rem;
+
+    @media screen and (max-width: 768px) {
+      flex-direction: column;
+      gap: 2rem;
+    }
+  }
+
+  a,
+  a:link {
+    color: black;
+  }
+</style>
+<div class="blog-section">
+  <div>
+    <div>{t("component.blogsection.titleDescription")}</div>
+    <h2>{t("component.blogsection.title")}</h2>
+    <p>{t("component.blogsection.description")}</p>
+    <a href="/blog" rel="prefetch">{t("component.blogsection.link")}</a>
+  </div>
+  <div>
+    {blogPosts.map((post) => <BlogCard post={post} />)}
+  </div>
+</div>

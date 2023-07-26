@@ -1,24 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Lindner IT - Redirecting</title>
-    <script>
-      (function () {
-        const defaultLang = "en";
-        const supportedLanguages = ["en", "de"];
-        const userLang = navigator.language.slice(0, 2).toLowerCase();
+---
+if (Astro.request.headers.has("Accept-Language")) {
+  let lang = Astro.request.headers.get("Accept-Language")?.toLowerCase();
+  if (lang) {
+    if (lang.includes("de")) {
+      return Astro.redirect("/de/", 301);
+    }
+  }
+}
 
-        const targetLang = supportedLanguages.includes(userLang)
-          ? userLang
-          : defaultLang;
-        window.location.replace(`/${targetLang}/`);
-      })();
-    </script>
-    <noscript>
-      <meta http-equiv="refresh" content="0;url=/en/" />
-    </noscript>
-  </head>
-  <body></body>
-</html>
+return Astro.redirect("/en/", 301);
+---

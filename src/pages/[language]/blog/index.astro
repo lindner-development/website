@@ -1,115 +1,108 @@
 ---
-import { getCollection } from "astro:content";
-import ContentPage from "../../../components/ContentPage.astro";
-import { useTranslations } from "../../../i18n/utils";
+import Footer from "../../../components/Footer.astro";
+import Header from "../../../components/Header.astro";
+import Heading from "../../../components/Heading.astro";
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import HookSection from "../../../components/HookSection.astro";
+import { useTranslations } from "../../../i18n";
 import { MetaBuilder } from "../../../meta";
 import {
-  BreadcrumbLink,
-  Breadcrumbs,
-} from "../../../components/Breadcrumbs/Breadcrumbs";
-export { getStaticPaths } from "../../static-language-paths";
+  BlogCategory,
+  BlogCategorySkeleton,
+  BlogPost,
+  BlogPostSkeleton,
+  contentfulClient,
+} from "../../../contentful";
+import BlogCard from "../../../components/BlogCard.astro";
 
 const { language } = Astro.params;
-const t = useTranslations((language ?? "en") as "en" | "de");
+const currentLanguage = language === "de" ? "de" : "en";
+const t = useTranslations(currentLanguage);
 
-const collection = await getCollection("blog");
-
-const pages = collection
-  .filter((p) => p.data.language == language)
-  .map((post) => {
-    return {
-      path: `/${post.data.language}/blog/${post.slug}`,
-      data: post.data,
-    };
+const categorySkeletons =
+  await contentfulClient.getEntries<BlogCategorySkeleton>({
+    content_type: "blogCategory",
+    locale: language == "de" ? "de" : "en-US",
   });
+const blogCategories: BlogCategory[] = categorySkeletons.items.map(
+  (item) => item.fields
+);
+
+const blogPostSkeletons = await contentfulClient.getEntries<BlogPostSkeleton>({
+  content_type: "blogPost",
+  locale: language == "de" ? "de" : "en-US",
+});
+const blogPosts: BlogPost[] = blogPostSkeletons.items.map(
+  (item) => item.fields
+);
 
 const metaBuilder = new MetaBuilder();
-metaBuilder.title(t("blog.title"));
-metaBuilder.description(t("blog.description"));
-metaBuilder.keywords(t("blog.keywords"));
-metaBuilder.revisedAt(new Date());
-metaBuilder.jsonld({
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  itemListElement: [
-    {
-      "@type": "ListItem",
-      position: 1,
-      name: t("blog.h1"),
-      item: `https://lindnerit.io/${language}/blog`,
-    },
-  ],
-});
-
-const links: BreadcrumbLink[] = [
-  {
-    href: `/${language}/`,
-    title: "Lindner IT",
-  },
-  {
-    href: `/${language}/blog`,
-    title: t("blog.h1"),
-    isCurrent: true,
-  },
-];
+metaBuilder.title(t("blog.meta.title") as string);
+metaBuilder.description(
+  t("blog.meta.description") as string,
+  t("blog.meta.description") as string,
+  t("blog.meta.openGraphDescription") as string,
+  t("blog.meta.twitterDescription") as string
+);
+metaBuilder.keywords(t("blog.meta.keywords") as unknown as string[]);
 const meta = metaBuilder.create();
 ---
 
 <style lang="scss">
-  @use "../../../scss/colors" as colors;
-  .latest-blogposts {
-    list-style: none;
-    padding: 0;
+  @use "src/scss/typography";
+  @use "src/scss/colors";
 
-    a {
-      text-decoration: none;
-      color: colors.$foreground;
-    }
+  article {
+    margin: 0 6rem;
   }
 
-  .blog-post {
-    margin-bottom: 1rem;
-    border-style: solid;
-    border-width: 1px;
-    border-radius: 3px;
-    border-color: gray;
-    background-color: gainsboro;
-    padding: 2rem;
-    display: flex;
-    flex-direction: column;
-    cursor: pointer;
+  h2 {
+    margin-top: 0;
   }
 
-  .blog-meta {
+  .blog-cards {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 1rem;
-    font-size: 0.8rem;
+    flex-wrap: wrap;
+    justify-content: start;
+    flex-direction: row;
+  }
+
+  .category-section {
+    margin-top: 2rem;
+  }
+
+  #hook {
+    margin-top: 4rem;
   }
 </style>
-<ContentPage {meta}>
-  <Breadcrumbs links={links} />
-  <h1>Blog</h1>
-  <ul class="latest-blogposts">
-    {
-      pages.map((p) => (
-        <li>
-          <a class="blog-post" href={p.path} title={p.data.title}>
-            <h2>{p.data.title}</h2>
-            <div>{p.data.description}</div>
-            <br />
-            <div class="blog-meta">
-              <div>
-                {t("blog.created-at")} {p.data.publishDate.toLocaleDateString()}
-              </div>
-              <div>
-                {t("blog.created-by")} {p.data.author}
-              </div>
+<BaseLayout {meta}>
+  <main>
+    <Header />
+    <article>
+      <Heading headingType="h1">
+        <div slot="description">
+          {t("blog.content.titleDescription")}
+        </div>
+        {t("blog.content.title")}
+      </Heading>
+      {
+        blogCategories.map((category) => (
+          <section class="category-section" id={category.slug}>
+            <h2>{category.displayName}</h2>
+            <div class="blog-cards">
+              {blogPosts
+                .filter((post) => post.category.fields.slug === category.slug)
+                .map((post) => (
+                  <BlogCard {post}/>
+                ))}
             </div>
-          </a>
-        </li>
-      ))
-    }
-  </ul>
-</ContentPage>
+          </section>
+        ))
+      }
+      <section id="hook">
+        <HookSection />
+      </section>
+    </article>
+    <Footer />
+  </main>
+</BaseLayout>

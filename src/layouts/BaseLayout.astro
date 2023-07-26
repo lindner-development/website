@@ -1,0 +1,380 @@
+---
+import type { Meta } from "../meta";
+import { FloatingActionButtons } from "../components/FloatingActionButtons/FloatingActionButtons";
+import { CookieBanner } from "../components/CookieBanner/CookieBanner";
+import { CookieDialog } from "../components/CookieDialog/CookieDialog";
+const { language } = Astro.params;
+
+export interface Props {
+  meta?: Meta;
+  noCookieDialog?: boolean;
+}
+
+const { meta }: Props = Astro.props;
+
+let languageSelectorUrl: string | undefined = undefined;
+if (language != null) {
+  let url = new URL("/language-selector", Astro.url.origin);
+  url.searchParams.set(
+    "redirect_to",
+    Astro.url.pathname.replace(`/${language}/`, "")
+  );
+  languageSelectorUrl = url.toString();
+}
+---
+
+<></>
+<!--
+* ******************************************************* *
+*   _      _           _                   _____ _______  *
+*  | |    (_)         | |                 |_   _|__   __| *
+*  | |     _ _ __   __| |_ __   ___ _ __    | |    | |    *
+*  | |    | | '_ \ / _` | '_ \ / _ \ '__|   | |    | |    *
+*  | |____| | | | | (_| | | | |  __/ |     _| |_   | |    *
+*  |______|_|_| |_|\__,_|_| |_|\___|_|    |_____|  |_|    *
+*                                                         *
+* ******************************************************* *
+* © Copyright Lindner IT 2023 | All rights reserved.      *                             
+* ******************************************************* *
+-->
+<html lang={language ?? "en"}>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+
+    <link rel="icon" type="image/webp" sizes="12x12" href="/favicon-12.webp" />
+    <link rel="icon" type="image/png" sizes="12x12" href="/favicon-12.png" />
+
+    <link rel="icon" type="image/webp" sizes="16x16" href="/favicon-16.webp" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png" />
+
+    <link rel="icon" type="image/webp" sizes="24x24" href="/favicon-24.webp" />
+    <link rel="icon" type="image/png" sizes="24x24" href="/favicon-24.png" />
+
+    <link rel="icon" type="image/webp" sizes="32x32" href="/favicon-32.webp" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+
+    <link rel="icon" type="image/webp" sizes="48x48" href="/favicon-48.webp" />
+    <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png" />
+
+    <link rel="icon" type="image/webp" sizes="64x64" href="/favicon-64.webp" />
+    <link rel="icon" type="image/png" sizes="64x64" href="/favicon-64.png" />
+
+    <link rel="icon" type="image/webp" sizes="72x72" href="/favicon-72.webp" />
+    <link rel="icon" type="image/png" sizes="72x72" href="/favicon-72.png" />
+
+    <link rel="icon" type="image/webp" sizes="96x96" href="/favicon-96.webp" />
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96.png" />
+
+    <link
+      rel="icon"
+      type="image/webp"
+      sizes="120x120"
+      href="/favicon-120.webp"
+    />
+    <link rel="icon" type="image/png" sizes="120x120" href="/favicon-120.png" />
+
+    <link
+      rel="icon"
+      type="image/webp"
+      sizes="128x128"
+      href="/favicon-128.webp"
+    />
+    <link rel="icon" type="image/png" sizes="128x128" href="/favicon-128.png" />
+
+    <link
+      rel="icon"
+      type="image/webp"
+      sizes="152x152"
+      href="/favicon-152.webp"
+    />
+    <link rel="icon" type="image/png" sizes="152x152" href="/favicon-152.png" />
+
+    <link
+      rel="icon"
+      type="image/webp"
+      sizes="167x167"
+      href="/favicon-167.webp"
+    />
+    <link rel="icon" type="image/png" sizes="167x167" href="/favicon-167.png" />
+
+    <link
+      rel="icon"
+      type="image/webp"
+      sizes="180x180"
+      href="/favicon-180.webp"
+    />
+    <link rel="icon" type="image/png" sizes="180x180" href="/favicon-180.png" />
+
+    <link
+      rel="icon"
+      type="image/webp"
+      sizes="192x192"
+      href="/favicon-192.webp"
+    />
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png" />
+
+    <link
+      rel="icon"
+      type="image/webp"
+      sizes="228x228"
+      href="/favicon-228.webp"
+    />
+    <link rel="icon" type="image/png" sizes="228x228" href="/favicon-228.png" />
+
+    <link
+      rel="icon"
+      type="image/webp"
+      sizes="256x256"
+      href="/favicon-256.webp"
+    />
+    <link rel="icon" type="image/png" sizes="256x256" href="/favicon-256.png" />
+
+    <link
+      rel="apple-touch-icon"
+      type="image/webp"
+      sizes="180x180"
+      href="/favicon-180.webp"
+    />
+    <link
+      rel="apple-touch-icon"
+      type="image/png"
+      sizes="180x180"
+      href="/favicon-180.png"
+    />
+
+    <link
+      rel="apple-touch-icon"
+      type="image/webp"
+      sizes="152x152"
+      href="/favicon-152.webp"
+    />
+    <link
+      rel="apple-touch-icon"
+      type="image/png"
+      sizes="152x152"
+      href="/favicon-152.png"
+    />
+
+    <link
+      rel="apple-touch-icon"
+      type="image/webp"
+      sizes="144x144"
+      href="/favicon-144.webp"
+    />
+    <link
+      rel="apple-touch-icon"
+      type="image/png"
+      sizes="144x144"
+      href="/favicon-144.png"
+    />
+
+    <link
+      rel="apple-touch-icon"
+      type="image/webp"
+      sizes="120x120"
+      href="/favicon-120.webp"
+    />
+    <link
+      rel="apple-touch-icon"
+      type="image/png"
+      sizes="120x120"
+      href="/favicon-120.png"
+    />
+
+    <link
+      rel="apple-touch-icon"
+      type="image/webp"
+      sizes="114x114"
+      href="/favicon-144.webp"
+    />
+    <link
+      rel="apple-touch-icon"
+      type="image/png"
+      sizes="114x114"
+      href="/favicon-144.png"
+    />
+
+    <link
+      rel="apple-touch-icon"
+      type="image/webp"
+      sizes="76x76"
+      href="/favicon-76.webp"
+    />
+    <link
+      rel="apple-touch-icon"
+      type="image/png"
+      sizes="76x76"
+      href="/favicon-76.png"
+    />
+
+    <link
+      rel="apple-touch-icon"
+      type="image/webp"
+      sizes="72x72"
+      href="/favicon-72.webp"
+    />
+    <link
+      rel="apple-touch-icon"
+      type="image/png"
+      sizes="72x72"
+      href="/favicon-72.png"
+    />
+
+    <meta name="msapplication-TileImage" content="./favicon-152.png" />
+    <meta name="msapplication-TileColor" content="#0093e7" />
+    <meta name="theme-color" content="#0093e7" />
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="#0093e7" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="format-detection" content="telephone=yes" />
+    <meta name="HandheldFriendly" content="true" />
+
+    <meta name="generator" content={Astro.generator} />
+    <meta name="revisit-after" content="7 days" />
+    <meta name="distribution" content="web" />
+    <meta name="robots" content="index, follow" />
+
+    <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <meta http-equiv="Content-Script-Type" content="text/javascript" />
+    <meta http-equiv="cache-control" content="public" />
+    <meta
+      name="no-email-collection"
+      content="https://www.unspam.com/noemailcollection/"
+    />
+    <meta name="copyright" content="Lindner IT" />
+    <meta name="author" content="Lindner IT" />
+    <meta name="designer" content="Lindner IT" />
+    <meta name="publisher" content="Lindner IT" />
+    <meta name="coverage" content="worldwide" />
+    <meta name="rating" content="general" />
+    <meta name="rating" content="safe for kids" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+
+    {
+      language && (
+        <>
+          {language == "de" && (
+            <link
+              rel="alternate"
+              hreflang="en"
+              href={Astro.url.pathname.replace("/de/", "/en/")}
+            />
+          )}
+          {language == "en" && (
+            <link
+              rel="alternate"
+              hreflang="de"
+              href={Astro.url.pathname.replace("/en/", "/de/")}
+            />
+          )}
+          {languageSelectorUrl && (
+            <link
+              rel="alternate"
+              hreflang="x-default"
+              href={languageSelectorUrl}
+            />
+          )}
+        </>
+      )
+    }
+
+    {
+      meta && (
+        <>
+          <title>{meta.title}</title>
+          <meta name="title" content={meta.title} />
+          <meta name="subject" content={meta.subject} />
+          <meta name="description" content={meta.description} />
+          <meta name="classification" content={meta.description} />
+          <meta name="summary" content={meta.summary} />
+          <meta name="abstract" content={meta.summary} />
+          <meta name="keywords" content={(meta.keywords ?? []).join(", ")} />
+
+          <meta name="url" content={Astro.url} />
+          <meta name="identifier-url" content={Astro.url} />
+          <link rel="canonical" href={Astro.url} />
+          {meta.revisedAt && (
+            <meta name="revised" content={meta?.revisedAt.toString()} />
+          )}
+          <meta property="og:type" content="website" />
+          <meta property="og:url" content={Astro.url} />
+          <meta property="og:title" content={meta.opengraphTitle} />
+          <meta property="og:description" content={meta.opengraphDescription} />
+          {meta.opengraphImage && (
+            <meta
+              property="og:image"
+              content={new URL(meta?.opengraphImage, Astro.url)}
+            />
+          )}
+          <meta property="twitter:card" content="summary_large_image" />
+          <meta property="twitter:url" content={Astro.url} />
+          <meta property="twitter:title" content={meta.twitterTitle} />
+          <meta
+            property="twitter:description"
+            content={meta.twitterDescription}
+          />
+          {meta.twitterImage && (
+            <meta
+              property="twitter:image"
+              content={new URL(meta?.twitterImage, Astro.url)}
+            />
+          )}
+          {meta.jsonld &&
+            meta.jsonld.map((item) => (
+              <script
+                type="application/ld+json"
+                set:html={JSON.stringify(item)}
+              />
+            ))}
+        </>
+      )
+    }
+    <style lang="scss">
+      @use "src/scss/colors";
+      @use "src/scss/mixins";
+      @import "@fontsource/mitr";
+
+      :root {
+        @include mixins.light-theme;
+      }
+
+      @media (prefers-color-scheme: dark) {
+        :root {
+          @include mixins.dark-theme;
+        }
+      }
+
+      :root[data-theme="dark"] {
+        @include mixins.dark-theme;
+      }
+
+      :root[data-theme="light"] {
+        @include mixins.light-theme;
+      }
+
+      body {
+        background: colors.$background;
+        color: colors.$foreground;
+        font-family: "Mitr", sans-serif;
+        margin: 0;
+        box-sizing: border-box;
+      }
+    </style>
+    <script src="../pageTransitions.ts"></script>
+  </head>
+  <body>
+    <div id="swup">
+      <slot />
+    </div>
+    <aside>
+      <CookieBanner language={language as string} client:only />
+      <CookieDialog language={language as string} client:only />
+      <FloatingActionButtons client:media="(max-width: 768px)" />
+    </aside>
+  </body>
+</html>

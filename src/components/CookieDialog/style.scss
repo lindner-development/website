@@ -135,3 +135,9 @@
     transform: scale(0.96);
   }
 }
+
+.cookie-button-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}

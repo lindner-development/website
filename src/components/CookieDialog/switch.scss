@@ -1,3 +1,6 @@
+@use "src/scss/typography";
+@use "src/scss/colors";
+
 .switch {
   display: inline-flex;
   align-items: center;
@@ -15,12 +18,12 @@
   cursor: pointer;
 }
 .switch__input:focus-visible + .switch__control {
-  outline: 2px solid hsl(200 98% 39%);
+  outline: 2px solid colors.$primary-500;
   outline-offset: 2px;
 }
 .switch__control[data-checked] {
-  border-color: hsl(200 98% 39%);
-  background-color: hsl(200 98% 39%);
+  border-color: colors.$primary-500;
+  background-color: colors.$primary-500;
 }
 .switch[data-readonly],
 .switch__control[data-readonly] {

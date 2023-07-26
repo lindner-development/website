@@ -1,0 +1,43 @@
+---
+import {
+  ContentPageSkeleton,
+  ContentPage,
+  contentfulClient,
+} from "../../contentful";
+import { documentToHtmlString } from "@contentful/rich-text-html-renderer";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Heading from "../../components/Heading.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+
+const { language } = Astro.params;
+
+const entry = await contentfulClient.getEntry<ContentPageSkeleton>(
+  "ZjrHw6h3LAy9feuwbVgGa",
+  {
+    locale: language == "de" ? "de" : "en-US",
+  }
+);
+const contentPage: ContentPage = entry.fields;
+const htmlContent = documentToHtmlString(contentPage.content);
+---
+
+<style lang="scss">
+  article {
+    padding: 1rem 6rem;
+
+    @media screen and (max-width: 768px) {
+      padding: 1rem 3rem;
+    }
+  }
+</style>
+<BaseLayout>
+  <main>
+    <Header />
+    <article>
+      <Heading headingType="h1">{contentPage.title}</Heading>
+      <div set:html={htmlContent} />
+    </article>
+    <Footer />
+  </main>
+</BaseLayout>

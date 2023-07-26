@@ -1,0 +1,120 @@
+---
+import Footer from "../../../components/Footer.astro";
+import Header from "../../../components/Header.astro";
+import Heading from "../../../components/Heading.astro";
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import { Button } from "../../../components/Button/Button";
+import HookSection from "../../../components/HookSection.astro";
+import { useTranslations } from "../../../i18n";
+import { MetaBuilder } from "../../../meta";
+
+const { language } = Astro.params;
+const currentLanguage = language === "de" ? "de" : "en";
+const t = useTranslations(currentLanguage);
+
+const metaBuilder = new MetaBuilder();
+metaBuilder.title(t("webDesign.meta.title") as string);
+metaBuilder.description(
+  t("webDesign.meta.description") as string,
+  t("webDesign.meta.description") as string,
+  t("webDesign.meta.openGraphDescription") as string,
+  t("webDesign.meta.twitterDescription") as string
+);
+metaBuilder.keywords(t("webDesign.meta.keywords") as unknown as string[]);
+const meta = metaBuilder.create();
+---
+
+<style lang="scss">
+  @use "src/scss/typography";
+  @use "src/scss/colors";
+
+  article {
+    margin: 0 6rem;
+  }
+
+  h2 {
+    margin-top: 0;
+  }
+
+  #software-development {
+    padding: 1rem 6rem;
+
+    @media screen and (max-width: 768px) {
+      padding: 1rem 3rem;
+    }
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12rem;
+
+    & > div {
+      flex: 1 1 0;
+    }
+
+    .software-development-image {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      max-width: 50%;
+      height: auto;
+    }
+
+    @media screen and (max-width: 768px) {
+      flex-direction: column;
+      gap: 0;
+      .software-development-image {
+        display: none;
+      }
+    }
+  }
+</style>
+<BaseLayout {meta}>
+  <main>
+    <Header />
+    <article>
+      <Heading headingType="h1">
+        <div slot="description">
+          {t("softwareDevelopment.content.titleDescription")}
+        </div>
+        {t("softwareDevelopment.content.title")}
+      </Heading>
+      <section id="software-development">
+        <img
+          class="software-development-image"
+          height="480"
+          width="480"
+          src="/software-development.svg"
+          alt="Softwareentwicklung"
+        />
+        <div>
+          <h2>{t("softwareDevelopment.content.headline")}</h2>
+          <div>
+            <p>
+              {t("softwareDevelopment.content.description1")}
+            </p>
+            <p>
+              {t("softwareDevelopment.content.description2")}
+            </p>
+          </div>
+          <div>
+            <a
+              href="https://outlook.office365.com/owa/calendar/BookingCall@lindnerit.io/bookings/"
+              target="_blank"
+              rel="noopener noreferrer nofollow"
+            >
+              <Button variant="secondary">
+                {t("softwareDevelopment.content.button") as string}
+              </Button>
+            </a>
+          </div>
+        </div>
+      </section>
+      <section id="hook">
+        <HookSection />
+      </section>
+    </article>
+    <Footer />
+  </main>
+</BaseLayout>
