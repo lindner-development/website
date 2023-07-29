@@ -1,8 +1,7 @@
 ---
 import type { Meta } from "../meta";
 import { FloatingActionButtons } from "../components/FloatingActionButtons/FloatingActionButtons";
-import { CookieBanner } from "../components/CookieBanner/CookieBanner";
-import { CookieDialog } from "../components/CookieDialog/CookieDialog";
+import Cookies from "../components/Cookies.astro";
 
 const { language } = Astro.params;
 
@@ -370,13 +369,10 @@ const langTag = language == "de" ? "de" : "en";
     <script src="../pageTransitions.ts"></script>
   </head>
   <body>
-    <div id="swup">
-      <slot />
-    </div>
+    <div id="swup"><slot /></div>
     <aside>
-      <CookieBanner language={language as string} client:only />
-      <CookieDialog language={language as string} client:only />
       <FloatingActionButtons client:media="(max-width: 768px)" />
+      <Cookies />
     </aside>
   </body>
 </html>

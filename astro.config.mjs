@@ -27,7 +27,8 @@ export default defineConfig({
     },
   }), critters(), rome(), compressor()],
   experimental: {
-    assets: true
+    assets: true,
+    viewTransitions: true
   },
   image: {
     service: sharpImageService(),

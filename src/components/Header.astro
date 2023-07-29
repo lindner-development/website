@@ -11,7 +11,11 @@ const currentLanguage = language === "de" ? "de" : "en";
 const t = useTranslations(currentLanguage);
 ---
 
-<PageHeader language={language as string}>
+<PageHeader
+  language={language as string}
+  transition:name="header"
+  transition:animate="morph"
+>
   <img
     slot="branding"
     width="119"

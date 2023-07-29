@@ -1,0 +1,38 @@
+---
+import { CookieBanner } from "./CookieBanner/CookieBanner";
+import { CookieDialog } from "./CookieDialog/CookieDialog";
+const { language } = Astro.params;
+---
+
+<CookieDialog language={language as string} client:only />
+
+<lindner-cookie-banner>
+  <CookieBanner language={language as string} client:only />
+</lindner-cookie-banner>
+
+<script>
+  import { cookiesSetAtom } from "../localStorage";
+
+  class LindnerCookieBanner extends HTMLElement {
+    constructor() {
+      super();
+      if (cookiesSetAtom.get()) {
+        this.remove();
+      } else {
+        this.style.display = "contents";
+      }
+      cookiesSetAtom.subscribe((value) => {
+        if (value) {
+          this.remove();
+        }
+      });
+    }
+  }
+
+  customElements.define("lindner-cookie-banner", LindnerCookieBanner);
+</script>
+<style>
+  lindner-cookie-banner {
+    display: none;
+  }
+</style>
