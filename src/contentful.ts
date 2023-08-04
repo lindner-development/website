@@ -1,4 +1,4 @@
-import contentful, { Asset, AssetLink, EntryLink } from "contentful";
+import contentful, { Asset, AssetLink } from "contentful";
 import type { Document } from "@contentful/rich-text-types";
 
 export interface Author {
@@ -85,10 +85,16 @@ export type ContentPageSkeleton = {
     }
 }
 
+if (process.env.CONTENTFUL_SPACE_ID === undefined) {
+    console.error("CONTENTFUL_SPACE_ID is undefined. This will produce undefined behavior!");
+    throw new Error("CONTENTFUL_SPACE_ID is undefined.");
+}
+// Do not use import.meta.env because import.meta.envs are replaced in build-time
+// Secrets should be runtime-only
 export const contentfulClient = contentful.createClient({
-    space: import.meta.env.CONTENTFUL_SPACE_ID,
-    accessToken: import.meta.env.DEV
-        ? import.meta.env.CONTENTFUL_PREVIEW_TOKEN
-        : import.meta.env.CONTENTFUL_DELIVERY_TOKEN,
-    host: import.meta.env.DEV ? "preview.contentful.com" : "cdn.contentful.com",
+    space: process.env.CONTENTFUL_SPACE_ID!,
+    accessToken: process.env.DEV
+        ? process.env.CONTENTFUL_PREVIEW_TOKEN!
+        : process.env.CONTENTFUL_DELIVERY_TOKEN!,
+    host: process.env.DEV ? "preview.contentful.com" : "cdn.contentful.com",
 });

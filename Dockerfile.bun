@@ -1,5 +1,0 @@
-FROM oven/bun:latest AS build
-COPY . .
-RUN bun install && \
-    bun run build
-ENTRYPOINT [ "bun", "preview" ]
