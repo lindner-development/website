@@ -10,7 +10,7 @@ RUN pnpm install --frozen-lockfile --prod
 COPY . .
 RUN pnpm build --production
 
-FROM node:20 AS runtime
+FROM node:20-alpine3.18 AS runtime
 LABEL org.opencontainers.image.title="Lindner IT Website"
 LABEL org.opencontainers.image.description="Node HTTP-Server for Lindner IT Website (using Astro: SSR + SSG)"
 LABEL org.opencontainers.image.authors="Robin Lindner <robin.lindner@lindnerit.io>"
