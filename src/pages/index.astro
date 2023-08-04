@@ -1,12 +1,32 @@
 ---
 if (Astro.request.headers.has("Accept-Language")) {
-  let lang = Astro.request.headers.get("Accept-Language")?.toLowerCase();
-  if (lang) {
-    if (lang.includes("de")) {
-      return Astro.redirect("/de/", 301);
+  let rawLangs = Astro.request.headers.get("Accept-Language")?.toLowerCase();
+
+  if (rawLangs) {
+    // Split and map languages to an array of [lang, weight] tuples
+    const langArr = rawLangs.split(",").map((part) => {
+      const [lang, q = "1"] = part.split(";q=");
+      let qNum = parseInt(q);
+      if (isNaN(qNum)) {
+        qNum = 1;
+      }
+      return [lang, qNum];
+    });
+
+    // Sort languages by weight in descending order
+    langArr.sort((a, b) => (b[1] as number) - (a[1] as number));
+
+    // If "de" is in the list of preferred languages, redirect to "/de/"
+    for (const [lang] of langArr) {
+      const l = lang as string;
+      if (l === "de" || l.startsWith("de-")) {
+        return Astro.redirect("/de/", 308);
+      } else if (l === "en" || l.startsWith("en-")) {
+        return Astro.redirect("/en/", 308);
+      }
     }
   }
 }
 
-return Astro.redirect("/en/", 301);
+return Astro.redirect("/en/", 308);
 ---

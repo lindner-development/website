@@ -4,6 +4,32 @@ import type { BlogPost } from "../contentful";
 const { post } = Astro.props;
 const blogPost: BlogPost = post;
 const asset = blogPost.image;
+
+// //images.ctfassets.net/07l1mol2rddh/6zxVexRTKGvUWBbaSjHiow/93fb115fd3979ff079d74309921db531/shutterstock_2147478935.jpg?fm=webp
+let contentfulUrl;
+
+try {
+  contentfulUrl = asset?.fields?.file?.url
+    ? new URL(`https:${asset?.fields?.file?.url as string}`)
+    : null;
+} catch (e) {
+  console.error(e);
+}
+
+let imageUrl: string;
+
+if (asset.fields.file && contentfulUrl) {
+  const parts = contentfulUrl.pathname.split("/");
+  if (parts?.length !== 5) {
+    console.error("Invalid Contentful URL");
+    imageUrl = "https://via.placeholder.com/300x200";
+  } else {
+    const uniqueId = parts[3];
+    imageUrl = `/cms-assets/${asset.sys.id}/${uniqueId}/${asset.fields.file.fileName}?format=webp&width=300&height=200`;
+  }
+} else {
+  imageUrl = "https://via.placeholder.com/300x200";
+}
 ---
 
 <style lang="scss">
@@ -51,9 +77,9 @@ const asset = blogPost.image;
 >
   <img
     class="blog-card-image"
-    src={(asset?.fields?.file?.url as string)
-      ? (asset?.fields?.file?.url as string) + "?fm=webp"
-      : ""}
+    src={imageUrl}
+    width="300"
+    height="200"
     alt={(asset?.fields?.title as string) ?? "Placeholder"}
   />
   <div class="blog-card-content">

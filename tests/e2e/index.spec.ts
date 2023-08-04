@@ -1,19 +1,25 @@
 import { test, expect } from '@playwright/test';
 
-test.use({
-    locale: 'en-US',
-});
+test.describe("When locale is set to en-US", () => {
+    test.use({
+        locale: 'en-US',
+        timezoneId: 'America/New_York',
+    });
 
-test('language navigation [en-US]', async ({ page }) => {
-    await page.goto('/');
-    await expect(page).toHaveURL(/.*en/);
-});
+    test('GET / redirects to /en/', async ({ page }) => {
+        await page.goto('/');
+        await expect(page).toHaveURL(/.*en/);
+    });
+})
 
-test.use({
-    locale: 'de-DE',
-});
+test.describe("When locale is set to de-DE", () => {
+    test.use({
+        locale: 'de-DE',
+        timezoneId: 'Europe/Berlin',
+    });
 
-test('language navigation [de-DE]', async ({ page }) => {
-    await page.goto('/');
-    await expect(page).toHaveURL(/.*de/);
-});
+    test('GET / redirects to /de/', async ({ page }) => {
+        await page.goto('/');
+        await expect(page).toHaveURL(/.*de/);
+    });
+})

@@ -1,4 +1,4 @@
-FROM node:20 AS build
+FROM node:20-alpine3.18 AS build
 ENV NODE_ENV=production
 
 WORKDIR /usr/src/app
@@ -20,6 +20,7 @@ LABEL org.opencontainers.image.source="https://github.com/lindner-development/we
 LABEL org.opencontainers.image.url="https://lindnerit.io"
 
 WORKDIR /usr/src/app
+USER node
 ENV NODE_ENV=production
 ENV HOST=0.0.0.0
 ENV PORT=3000
