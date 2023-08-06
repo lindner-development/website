@@ -1,14 +1,17 @@
 ---
-import { getImage } from "astro:assets";
-import hero from "../assets/hero.webp";
+//import { getImage } from "astro:assets";
+//import hero from "../assets/hero.webp";
 import { Button } from "./Button/Button";
 import { useTranslations } from "../i18n";
+
+// 06.08.2023 | disable assets for now
+/*
 const optimizedHero = await getImage({
   src: hero,
   format: "webp",
   quality: 80,
 });
-
+*/
 const { language } = Astro.params;
 const currentLanguage = language === "de" ? "de" : "en";
 const t = useTranslations(currentLanguage);
@@ -32,10 +35,7 @@ const t = useTranslations(currentLanguage);
     gap: 0.3rem;
   }
 </style>
-<div
-  class="lindner-hero"
-  style={`background-image: url(${optimizedHero.src});`}
->
+<div class="lindner-hero" style={`background-image: url('/hero.webp');`}>
   <h1>{t("index.hero.title")}</h1>
   <p>{t("index.hero.description")}</p>
 

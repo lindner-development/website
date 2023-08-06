@@ -1,4 +1,4 @@
-import { defineConfig, sharpImageService } from 'astro/config';
+import { defineConfig } from 'astro/config';
 
 import solidJs from "@astrojs/solid-js";
 import prefetch from "@astrojs/prefetch";
@@ -25,12 +25,12 @@ export default defineConfig({
     },
   }), compressor()],
   experimental: {
-    assets: true,
-    viewTransitions: true
+    //assets: true,
+    //viewTransitions: true
   },
-  image: {
-    service: sharpImageService(),
-  },
+  //image: {
+  //  service: sharpImageService(),
+  //},
   output: "server",
   site: "https://lindnerit.io/",
 });

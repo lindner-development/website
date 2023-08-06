@@ -3,8 +3,8 @@ import Footer from "../../components/Footer.astro";
 import Header from "../../components/Header.astro";
 import Heading from "../../components/Heading.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import lindner from "../../assets/lindner.webp";
-import { Image } from "astro:assets";
+//import lindner from "../../assets/lindner.webp";
+//import { Image } from "astro:assets";
 import { Button } from "../../components/Button/Button";
 import HookSection from "../../components/HookSection.astro";
 import { useTranslations } from "../../i18n";
@@ -88,11 +88,21 @@ const meta = metaBuilder.create();
         {t("aboutus.content.title")}
       </Heading>
       <section id="aboutus">
-        <Image
+        {
+          /*<Image
           class="aboutus-image"
           height="480"
           src={lindner}
           alt="Avatar of Robin Lindner"
+        />*/
+        }
+        <img
+          src="/lindner.webp"
+          height="480"
+          width="320"
+          decoding="async"
+          alt="Avatar of Robin Lindner"
+          class="aboutus-image"
         />
         <div>
           <h2>{t("aboutus.content.headline")}</h2>

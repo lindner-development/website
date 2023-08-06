@@ -25,7 +25,7 @@ if (asset.fields.file && contentfulUrl) {
     imageUrl = "https://via.placeholder.com/300x200";
   } else {
     const uniqueId = parts[3];
-    imageUrl = `/cms-assets/${asset.sys.id}/${uniqueId}/${asset.fields.file.fileName}?format=webp&width=300&height=200`;
+    imageUrl = `/cms/${asset.sys.id}/${uniqueId}/${asset.fields.file.fileName}?format=webp&width=300&height=200`;
   }
 } else {
   imageUrl = "https://via.placeholder.com/300x200";
