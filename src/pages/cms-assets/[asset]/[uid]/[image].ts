@@ -27,10 +27,10 @@ export const get: APIRoute = async function get({ params, request }) {
         let requestUrl = new URL(`https://images.ctfassets.net/${contentfulSpaceId}/${asset}/${uid}/${image}`);
         requestUrl.searchParams.set("fm", format);
         if (width) {
-            requestUrl.searchParams.set("width", width);
+            requestUrl.searchParams.set("w", width);
         }
         if (height) {
-            requestUrl.searchParams.set("height", height);
+            requestUrl.searchParams.set("h", height);
         }
         const response = await fetch(requestUrl, {
             headers: {

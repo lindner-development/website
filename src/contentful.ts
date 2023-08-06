@@ -89,12 +89,31 @@ if (process.env.CONTENTFUL_SPACE_ID === undefined) {
     console.error("CONTENTFUL_SPACE_ID is undefined. This will produce undefined behavior!");
     throw new Error("CONTENTFUL_SPACE_ID is undefined.");
 }
+
+let contentfulToken: string | undefined;
+let contentfulHost: string = "cdn.contentful.com";
+if (process.env.NODE_ENV?.toLowerCase() !== "production") {
+    contentfulHost = "preview.contentful.com";
+    contentfulToken = process.env.CONTENTFUL_PREVIEW_TOKEN;
+    console.log(`Contentful environment: Preview (${contentfulHost})`)
+    if (contentfulToken === undefined) {
+        console.error("CONTENTFUL_PREVIEW_TOKEN is undefined.");
+        throw new Error("CONTENTFUL_PREVIEW_TOKEN is undefined.");
+    }
+}
+else {
+    contentfulToken = process.env.CONTENTFUL_DELIVERY_TOKEN;
+    console.log(`Contentful environment: Production (${contentfulHost})`)
+    if (contentfulToken === undefined) {
+        console.error("CONTENTFUL_DELIVERY_TOKEN is undefined.");
+        throw new Error("CONTENTFUL_DELIVERY_TOKEN is undefined.");
+    }
+}
+
 // Do not use import.meta.env because import.meta.envs are replaced in build-time
 // Secrets should be runtime-only
 export const contentfulClient = contentful.createClient({
     space: process.env.CONTENTFUL_SPACE_ID!,
-    accessToken: process.env.DEV
-        ? process.env.CONTENTFUL_PREVIEW_TOKEN!
-        : process.env.CONTENTFUL_DELIVERY_TOKEN!,
-    host: process.env.DEV ? "preview.contentful.com" : "cdn.contentful.com",
+    accessToken: contentfulToken,
+    host: contentfulHost,
 });
