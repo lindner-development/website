@@ -367,6 +367,16 @@ const langTag = language == "de" ? "de" : "en";
       }
     </style>
     <script src="../pageTransitions.ts"></script>
+    <script type="text/partytown" src="https://www.googletagmanager.com/gtag/js?id=G-T8GDWTZ831"></script>
+    <script type="text/partytown">
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      // For GDPR compliance
+      gtag('config', 'G-T8GDWTZ831', { 'anonymize_ip': true });
+    </script>
+    <script src="../clarity.ts"></script>
   </head>
   <body>
     <div id="swup"><slot /></div>

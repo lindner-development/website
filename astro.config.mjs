@@ -1,5 +1,4 @@
 import { defineConfig } from 'astro/config';
-
 import solidJs from "@astrojs/solid-js";
 import prefetch from "@astrojs/prefetch";
 import sitemap from "@astrojs/sitemap";
@@ -8,6 +7,8 @@ import compressor from "astro-compressor";
 
 //import deno from '@astrojs/deno';
 import nodejs from '@astrojs/node';
+
+import partytown from "@astrojs/partytown";
 
 // https://astro.build/config
 export default defineConfig({
@@ -20,10 +21,14 @@ export default defineConfig({
       defaultLocale: "en",
       locales: {
         en: 'en-US',
-        de: 'de-DE',
-      },
-    },
-  }), compressor()],
+        de: 'de-DE'
+      }
+    }
+  }), compressor(), partytown({
+    config: {
+      forward: ["dataLayer.push"]
+    }
+  })],
   experimental: {
     //assets: true,
     //viewTransitions: true
@@ -32,5 +37,5 @@ export default defineConfig({
   //  service: sharpImageService(),
   //},
   output: "server",
-  site: "https://lindnerit.io/",
+  site: "https://lindnerit.io/"
 });

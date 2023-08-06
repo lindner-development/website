@@ -91,7 +91,7 @@ const meta = metaBuilder.create();
             <h2>{category.displayName}</h2>
             <div class="blog-cards">
               {blogPosts
-                .filter((post) => post.category.fields.slug === category.slug)
+                .filter((post) => post?.category?.fields?.slug === category.slug)
                 .map((post) => (
                   <BlogCard {post}/>
                 ))}

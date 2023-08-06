@@ -2,10 +2,16 @@
 
 @mixin light-theme {
   --foreground: #000000;
+  --foreground-muted: #424856ff;
+  --foreground-muted2: #323743ff;
+  --theme-switch: #0f1343;
   --background: #ffffff;
 }
 
 @mixin dark-theme {
   --foreground: #ffffff;
+  --foreground-muted: #dee1e6ff;
+  --foreground-muted2: rgb(230, 230, 230);
+  --theme-switch: white;
   --background: #303952;
 }

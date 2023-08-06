@@ -16,6 +16,8 @@ const t = useTranslations(currentLanguage);
 ---
 
 <style lang="scss">
+  @use "src/scss/typography";
+  @use "src/scss/colors";
   .blog-section {
     display: flex;
     flex-direction: row;
@@ -45,7 +47,7 @@ const t = useTranslations(currentLanguage);
 
   a,
   a:link {
-    color: black;
+    color: colors.$foreground;
   }
 </style>
 <div class="blog-section">

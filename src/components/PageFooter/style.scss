@@ -44,7 +44,7 @@ footer {
     a {
       font-family: typography.$font-family;
       font-size: typography.$font-size-xl;
-      color: colors.$black;
+      color: colors.$foreground;
       text-decoration: none;
       cursor: pointer;
       border-bottom-style: solid;
@@ -74,7 +74,7 @@ footer {
   a {
     font-family: typography.$font-family;
     font-size: typography.$font-size-xl;
-    color: colors.$black;
+    color: colors.$foreground;
     text-decoration: none;
     cursor: pointer;
   }
@@ -109,7 +109,7 @@ footer {
 
 .lindner-copyright-notice {
   font-size: typography.$font-size-m;
-  color: colors.$neutral-650;
+  color: colors.$foreground-muted;
   text-align: center;
 }
 
@@ -137,7 +137,7 @@ footer {
     a {
       font-family: typography.$font-family;
       font-size: typography.$font-size-xl;
-      color: colors.$black;
+      color: colors.$foreground;
       text-decoration: none;
     }
   }
@@ -159,7 +159,7 @@ footer {
   a:link,
   a:hover,
   a:active {
-    color: black;
+    color: colors.$foreground;
 
     &.active {
       text-decoration: none;

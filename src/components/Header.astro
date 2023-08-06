@@ -11,8 +11,29 @@ const currentLanguage = language === "de" ? "de" : "en";
 const t = useTranslations(currentLanguage);
 ---
 
+<style is:global lang="scss">
+  @media (prefers-color-scheme: dark) {
+    :root {
+      #branding {
+        content: url("/wordmark-white.svg");
+      }
+    }
+  }
+
+  :root[data-theme="dark"] {
+    #branding {
+      content: url("/wordmark-white.svg");
+    }
+  }
+  :root[data-theme="light"] {
+    #branding {
+      content: url("/wordmark.svg");
+    }
+  }
+</style>
 <PageHeader language={language as string}>
   <img
+    id="branding"
     slot="branding"
     width="119"
     height="39"

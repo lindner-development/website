@@ -18,7 +18,7 @@ try {
 
 let imageUrl: string;
 
-if (asset.fields.file && contentfulUrl) {
+if (asset?.fields?.file && contentfulUrl) {
   const parts = contentfulUrl.pathname.split("/");
   if (parts?.length !== 5) {
     console.error("Invalid Contentful URL");

@@ -33,7 +33,7 @@ export const ThemeToggle = () => {
         }
     });
 
-    return <Button.Root class="lindner-theme-toggle" title="Toggle theme" onClick={() => setTheme((t) => (t === "light" ? "dark" : "light"))}>
+    return <Button.Root class="lindner-theme-toggle" title="Toggle theme" data-state={theme()} onClick={() => setTheme((t) => (t === "light" ? "dark" : "light"))}>
         <div class="lindner-icon-container">
             <Presence>
                 {theme() === "light" &&
@@ -43,16 +43,16 @@ export const ThemeToggle = () => {
                         initial={{ opacity: 0 }}
                         exit={{ opacity: 0 }}
                         transition={{ duration: 0.3 }}>
-                        <Sun />
+                        <div><Sun /></div>
                     </Motion.div>}
-                {theme() !== "light" &&
+                {theme() === "dark" &&
                     <Motion.div
                         class="lindner-icon"
                         animate={{ opacity: 1 }}
                         initial={{ opacity: 0 }}
                         exit={{ opacity: 0 }}
                         transition={{ duration: 0.3 }}>
-                        <MoonStar class="lindner-icon" />
+                        <div><MoonStar /></div>
                     </Motion.div>}
             </Presence>
         </div>

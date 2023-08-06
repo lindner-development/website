@@ -131,16 +131,21 @@ $neutral-700: #323743ff;
 
 $theme-light: (
   foreground: #000000,
+  foreground-muted: $neutral-650,
   background: #ffffff,
 );
 
 $theme-dark: (
   foreground: #ffffff,
+  foreground-muted: $neutral-300,
   background: $primary-800,
 );
 
 $foreground: var(--foreground);
+$foreground-muted: var(--foreground-muted);
+$foreground-muted2: var(--foreground-muted2);
 $background: var(--background);
+$theme-switch: var(--theme-switch);
 
 $white: #ffffff;
 $black: #000000;
