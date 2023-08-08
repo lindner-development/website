@@ -51,7 +51,7 @@ Abonnieren Sie kostenlos unseren Newsletter und wir bringen Licht ins digitale C
                 <li><a href="https://www.instagram.com/lindner.it/" target="_blank" rel="noopener noreferrer" title="Instagram"><Instagram /></a></li>
                 <li><a href="https://www.linkedin.com/company/lindner-it/" target="_blank" rel="noopener noreferrer" title="LinkedIn"><Linkedin /></a></li>
                 <li><a href="https://www.youtube.com/@lindnerit" target="_blank" rel="noopener noreferrer" title="YouTube"><Youtube /></a></li>
-                <li><a href="https://github.com/lindner-development" target="_blank" rel="noopener noreferrer" title="YouTube"><Github /></a></li>
+                <li><a href="https://github.com/lindner-development" target="_blank" rel="noopener noreferrer" title="Github"><Github /></a></li>
             </ul>
         </div>
     </footer>

@@ -12,6 +12,11 @@ export interface Props {
 
 const { meta }: Props = Astro.props;
 const langTag = language == "de" ? "de" : "en";
+
+let url = Astro.url;
+if(Astro.site) {
+  url.hostname = Astro.site.hostname;
+}
 ---
 
 <!--
@@ -253,24 +258,24 @@ const langTag = language == "de" ? "de" : "en";
             <link
               rel="alternate"
               hreflang="en"
-              href={Astro.url.toString().replace("/de/", "/en/")}
+              href={url.toString().replace("/de/", "/en/")}
             />
             <link
               rel="alternate"
               hreflang="x-default"
-              href={Astro.url.toString().replace("/de/", "/en/")}
+              href={url.toString().replace("/de/", "/en/")}
             />
           )}
           {language == "en" && (
             <link
               rel="alternate"
               hreflang="de"
-              href={Astro.url.toString().replace("/en/", "/de/")}
+              href={url.toString().replace("/en/", "/de/")}
             />
             <link
               rel="alternate"
               hreflang="x-default"
-              href={Astro.url.toString()}
+              href={url.toString()}
             />
           )}
           {language && (
@@ -296,14 +301,14 @@ const langTag = language == "de" ? "de" : "en";
           <meta name="abstract" content={meta.summary} />
           <meta name="keywords" content={(meta.keywords ?? []).join(", ")} />
 
-          <meta name="url" content={Astro.url} />
-          <meta name="identifier-url" content={Astro.url} />
-          <link rel="canonical" href={Astro.url} />
+          <meta name="url" content={url} />
+          <meta name="identifier-url" content={url} />
+          <link rel="canonical" href={url} />
           {meta.revisedAt && (
             <meta name="revised" content={meta?.revisedAt.toString()} />
           )}
           <meta property="og:type" content="website" />
-          <meta property="og:url" content={Astro.url} />
+          <meta property="og:url" content={url} />
           <meta property="og:title" content={meta.opengraphTitle} />
           <meta property="og:description" content={meta.opengraphDescription} />
           {meta.opengraphImage && (
@@ -313,7 +318,7 @@ const langTag = language == "de" ? "de" : "en";
             />
           )}
           <meta property="twitter:card" content="summary_large_image" />
-          <meta property="twitter:url" content={Astro.url} />
+          <meta property="twitter:url" content={url} />
           <meta property="twitter:title" content={meta.twitterTitle} />
           <meta
             property="twitter:description"
@@ -322,7 +327,7 @@ const langTag = language == "de" ? "de" : "en";
           {meta.twitterImage && (
             <meta
               property="twitter:image"
-              content={new URL(meta?.twitterImage, Astro.url)}
+              content={new URL(meta?.twitterImage, url)}
             />
           )}
           {meta.jsonld &&

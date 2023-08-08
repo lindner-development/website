@@ -31,6 +31,7 @@ const blogCategories: BlogCategory[] = categorySkeletons.items.map(
 const blogPostSkeletons = await contentfulClient.getEntries<BlogPostSkeleton>({
   content_type: "blogPost",
   locale: language == "de" ? "de" : "en-US",
+  select: ["fields.title", "fields.slug", "fields.category", "fields.author", "fields.image", "fields.metaDescription", "sys.id", "sys.updatedAt", "sys.createdAt"]
 });
 const blogPosts: BlogPost[] = blogPostSkeletons.items.map(
   (item) => item.fields
