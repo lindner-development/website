@@ -33,6 +33,9 @@ const meta = metaBuilder.create();
 
   article {
     margin: 0 6rem;
+    @media screen and (max-width: 768px) {
+      margin: 0 3rem;
+    }
   }
 
   h2 {
@@ -76,6 +79,10 @@ const meta = metaBuilder.create();
   .platform-adversiting {
     margin-top: 0.4rem;
     font-size: typography.$font-size-xs;
+  }
+  a,
+  a:link {
+    color: colors.$foreground;
   }
 </style>
 <BaseLayout {meta}>

@@ -27,7 +27,11 @@ const meta = metaBuilder.create();
   @use "src/scss/colors";
 
   article {
-    margin: 0 6rem;
+    padding: 0 6rem;
+
+    @media screen and (max-width: 768px) {
+      padding: 0 3rem;
+    }
   }
 
   h2 {
@@ -50,6 +54,7 @@ const meta = metaBuilder.create();
     border-radius: 20px;
     padding: 1rem;
     color: black;
+    hyphens: auto;
 
     &.block-secondary {
       background-color: colors.$secondary-100;
@@ -128,12 +133,25 @@ const meta = metaBuilder.create();
                 target="_blank"
                 rel="noreferrer nofollow noopener"
                 href="https://ec.europa.eu/consumers/odr"
+                title="Link to the EU Commission's online dispute resolution platform"
                 >https://ec.europa.eu/consumers/odr</a
               >
             </div>
           </div>
         </div>
         <div class="block block-tertiary">
+          <h2>{t("legalDetails.content.responsibleForContentTitle")}</h2>
+          <div>Robin Lindner</div>
+        </div>
+        <div class="block block-tertiary">
+          <h2>{t("legalDetails.content.disclaimerTitle")}</h2>
+          <div>
+            <p>
+              {t("legalDetails.content.disclaimer")}
+            </p>
+          </div>
+        </div>
+        <div class="block block-secondary">
           <h2>{t("legalDetails.content.consumerDisputeResolutionTitle")}</h2>
           <div>
             <p>
@@ -143,6 +161,6 @@ const meta = metaBuilder.create();
         </div>
       </div>
     </article>
-    <Footer />
   </main>
+  <Footer />
 </BaseLayout>

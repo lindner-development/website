@@ -23,7 +23,7 @@ const t = useTranslations(currentLanguage);
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: #222c97ff;
+    background: url("/hero.webp") #222c97ff;
     background-size: cover;
     height: 100%;
     color: white;
@@ -35,7 +35,7 @@ const t = useTranslations(currentLanguage);
     gap: 0.3rem;
   }
 </style>
-<div class="lindner-hero" style={`background-image: url('/hero.webp');`}>
+<div class="lindner-hero">
   <h1>{t("index.hero.title")}</h1>
   <p>{t("index.hero.description")}</p>
 

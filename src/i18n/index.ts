@@ -125,9 +125,12 @@ export const data = {
         'legalDetails.content.vatIdTitle': 'VAT ID',
         'legalDetails.content.vatId': 'VAT ID according to §\u00A027a\u00A0UStG',
 
-        //'legalDetails.content.responsibleForContentTitle': 'Responsible for content according to § 55 Abs. 2 RStV',
+        'legalDetails.content.responsibleForContentTitle': 'Responsible for content according to § 55 par. 2 RStV',
         'legalDetails.content.euDisputeResolutionTitle': 'EU dispute resolution',
         'legalDetails.content.euDisputeResolution': 'The European Commission provides a platform for online dispute resolution (ODR):',
+
+        'legalDetails.content.disclaimerTitle': 'Disclaimer',
+        'legalDetails.content.disclaimer': 'As a service provider, we are responsible for our own content on these pages in accordance with §\u00A07 par. 1 TMG under the general laws. Despite careful control of the content, we assume no liability for external links and their content.',
 
         'legalDetails.content.consumerDisputeResolutionTitle': 'Consumer dispute resolution/Universal arbitration board',
         'legalDetails.content.consumerDisputeResolution': 'We are not willing or obliged to participate in dispute resolution proceedings before a consumer arbitration board according to §\u00A036\u00A0VSBG.',
@@ -276,9 +279,12 @@ export const data = {
         'legalDetails.content.vatIdTitle': 'Umsatzsteuer-Identifikationsnummer',
         'legalDetails.content.vatId': 'Umsatzsteuer-ID gemäß §\u00A027a\u00A0UStG',
 
-        //'legalDetails.content.responsibleForContentTitle': 'Responsible for content according to § 55 Abs. 2 RStV',
+        'legalDetails.content.responsibleForContentTitle': 'Inhaltlich verantwortlich gemäß § 55 Abs. 2 RStV',
         'legalDetails.content.euDisputeResolutionTitle': 'EU-Streitschlichtung',
         'legalDetails.content.euDisputeResolution': 'Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit:',
+
+        'legalDetails.content.disclaimerTitle': 'Haftung',
+        'legalDetails.content.disclaimer': 'Als Diensteanbieter sind wir gemäß §\u00A07 Abs. 1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Trotz sorgfältiger inhaltlicher Kontrolle übernehmen wir keine Haftung für externe Links sowie dessen Inhalte.',
 
         'legalDetails.content.consumerDisputeResolutionTitle': 'Verbraucherstreitbeilegung',
         'legalDetails.content.consumerDisputeResolution': 'Wir sind nicht bereit und nicht verpflichtet gemäß §\u00A036\u00A0VSBG an einem Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.',
@@ -298,7 +304,7 @@ export const data = {
         'aboutus.content.title': 'Erfahren Sie mehr über uns',
         'aboutus.content.titleDescription': 'Werfen Sie einen Blick hinter den Code',
         'aboutus.content.headline': 'Über uns',
-        'aboutus.content.description': 'Lindner IT repräsentiert den zeitgenössischen Geist von Softwareentwicklung und Webdesign. Im Jahre 2023 gegründet und im lieblichen Taubertal verwurzelt, verkörpert das Unternehmen die Vision von Robin Lindner. Ein leidenschaftlicher Softwareentwickler, dessen Engagement sich in jeder erstellten Codezeile und jedem gestalteten Pixel widerspiegelt. Lindner IT steht für Qualität und Effizienz, um maßgeschneiderte, leistungsstarke Lösungen zu bieten, die sowohl die aktuellen als auch zukünftige Bedürfnisse unserer Kunden erfüllen.',
+        'aboutus.content.description': 'Lindner IT steht für moderne Softwareentwicklung und Webdesign mit dem Fokus auf Geschwindigkeit. Im Jahre 2023 gegründet und im lieblichen Taubertal verwurzelt, verkörpert das Unternehmen die Vision von Robin Lindner. Ein leidenschaftlicher Softwareentwickler, dessen Engagement sich in jeder erstellten Codezeile und jedem gestalteten Pixel widerspiegelt. Lindner IT steht für Qualität und Effizienz, um maßgeschneiderte, leistungsstarke Lösungen zu bieten, die sowohl die aktuellen als auch zukünftige Bedürfnisse unserer Kunden erfüllen.',
         'aboutus.content.button': 'Portfolio'
     }
 } as const;
