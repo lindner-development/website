@@ -1,3 +1,6 @@
+import { getStaticPaths } from "../../../paramHelper";
+export { getStaticPaths };
+
 import { BlogPost, BlogPostSkeleton, contentfulClient } from '../../../contentful';
 import type { APIRoute } from 'astro';
 import rss, { RSSFeedItem } from '@astrojs/rss';

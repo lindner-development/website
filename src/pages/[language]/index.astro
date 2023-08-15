@@ -1,4 +1,8 @@
 ---
+//import { getStaticPaths } from "../../paramHelper";
+//export { getStaticPaths };
+export const prerender = false;
+
 import Header from "../../components/Header.astro";
 import Hero from "../../components/Hero.astro";
 import Heading from "../../components/Heading.astro";
@@ -117,15 +121,20 @@ const meta = metaBuilder.create();
         >
       </div>
       {/*<Image class="about-us-image" src={aboutUsImage} alt="About us" />*/}
-      <img
-        class="about-us-image"
-        src="/communication.webp"
-        alt="About us"
-        width="3284"
-        height="2916"
-        loading="lazy"
-        decoding="async"
-      />
+      <picture class="about-us-image">
+        <source srcset="/communication.avif" type="image/avif" />
+        <source srcset="/communication.jxl" type="image/jxl" />
+        <source srcset="/communication.webp" type="image/webp" />
+        <img
+          class="about-us-image"
+          src="/communication.webp"
+          alt="About us"
+          width="3284"
+          height="2916"
+          loading="lazy"
+          decoding="async"
+        />
+      </picture>
     </section>
     <section id="your-partner">
       <Heading>

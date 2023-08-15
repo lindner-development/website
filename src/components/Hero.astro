@@ -23,7 +23,25 @@ const t = useTranslations(currentLanguage);
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background: url("/hero.webp") #222c97ff;
+    background-image: -webkit-image-set(
+      url("/hero.webp") type("image/webp"),
+      url("/hero.avif") type("image/avif"),
+      url("/hero.jxl") type("image/jxl"),
+      url("/hero.jpg") type("image/jpeg")
+    );
+    background-image: image-set(
+      url("/hero.webp") type("image/webp"),
+      url("/hero.avif") type("image/avif"),
+      url("/hero.jxl") type("image/jxl"),
+      url("/hero.jpg") type("image/jpeg")
+    );
+    /*background: image-set(
+        url("/hero.webp") type("image/webp"),
+        url("/hero.avif") type("image/avif"),
+        url("/hero.jxl") type("image/jxl"),
+        url("/hero.jpg") type("image/jpeg")
+      )
+      url("/hero.webp") #222c97ff;*/
     background-size: cover;
     height: 100%;
     color: white;

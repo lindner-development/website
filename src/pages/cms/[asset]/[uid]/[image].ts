@@ -1,5 +1,7 @@
 import type { APIRoute } from 'astro';
 
+export const prerender = false;
+
 export const get: APIRoute = async function get({ params, request }) {
     let asset = params.asset;
     let uid = params.uid;
@@ -16,7 +18,7 @@ export const get: APIRoute = async function get({ params, request }) {
         });
     }
 
-    if (format !== "webp" && format !== "png" && format !== "jpg" && format !== "jpeg") {
+    if (format !== "webp" && format !== "png" && format !== "jpg" && format !== "jpeg" && format !== "avif") {
         return new Response("Invalid format", {
             status: 400
         });

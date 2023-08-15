@@ -1,4 +1,9 @@
 ---
+import { getStaticPaths } from "../../paramHelper";
+export { getStaticPaths };
+
+export const prerender = true;
+
 import Footer from "../../components/Footer.astro";
 import Header from "../../components/Header.astro";
 import Heading from "../../components/Heading.astro";
@@ -96,14 +101,19 @@ const meta = metaBuilder.create();
           alt="Avatar of Robin Lindner"
         />*/
         }
-        <img
-          src="/lindner.webp"
-          height="480"
-          width="320"
-          decoding="async"
-          alt="Avatar of Robin Lindner"
-          class="aboutus-image"
-        />
+        <picture class="aboutus-image">
+          <source srcset="/lindner.avif" type="image/avif" />
+          <source srcset="/lindner.jxl" type="image/jxl" />
+          <source srcset="/lindner.webp" type="image/webp" />
+          <img
+            class="aboutus-image"
+            src="/lindner.webp"
+            height="480"
+            width="320"
+            decoding="async"
+            alt="Avatar of Robin Lindner"
+          />
+        </picture>
         <div>
           <h2>{t("aboutus.content.headline")}</h2>
           <div>

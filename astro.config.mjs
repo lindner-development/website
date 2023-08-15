@@ -43,6 +43,16 @@ export default defineConfig({
   //image: {
   //  service: sharpImageService(),
   //},
-  output: "server",
-  site: "https://lindnerit.io/"
+  output: "hybrid",
+  site: "https://lindnerit.io/",
+  compressHTML: true,
+  build: {
+    split: true
+  },
+  vite: {
+    build: {
+      modulePreload: true,
+      minify: "terser"
+    }
+  }
 });

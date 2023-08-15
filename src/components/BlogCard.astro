@@ -17,6 +17,9 @@ try {
 }
 
 let imageUrl: string;
+let avifImageUrl: string | undefined;
+let webpImageUrl: string | undefined;
+let jpegImageUrl: string | undefined;
 
 if (asset?.fields?.file && contentfulUrl) {
   const parts = contentfulUrl.pathname.split("/");
@@ -26,6 +29,9 @@ if (asset?.fields?.file && contentfulUrl) {
   } else {
     const uniqueId = parts[3];
     imageUrl = `/cms/${asset.sys.id}/${uniqueId}/${asset.fields.file.fileName}?format=webp&width=300&height=200`;
+    webpImageUrl = `/cms/${asset.sys.id}/${uniqueId}/${asset.fields.file.fileName}?format=webp&width=300&height=200`;
+    avifImageUrl = `/cms/${asset.sys.id}/${uniqueId}/${asset.fields.file.fileName}?format=avif&width=300&height=200`;
+    jpegImageUrl = `/cms/${asset.sys.id}/${uniqueId}/${asset.fields.file.fileName}?format=jpeg&width=300&height=200`;
   }
 } else {
   imageUrl = "https://via.placeholder.com/300x200";
@@ -75,13 +81,18 @@ if (asset?.fields?.file && contentfulUrl) {
   href=`/${language}/blog/${blogPost?.category?.fields?.slug ?? "uncategorized"}/${blogPost.slug}`
   class="blog-card"
 >
-  <img
-    class="blog-card-image"
-    src={imageUrl}
-    width="300"
-    height="200"
-    alt={(asset?.fields?.title as string) ?? "Placeholder"}
-  />
+  <picture class="blog-card-image">
+    {avifImageUrl && <source srcset={avifImageUrl} type="image/avif" />}
+    {webpImageUrl && <source srcset={webpImageUrl} type="image/webp" />}
+    {jpegImageUrl && <source srcset={jpegImageUrl} type="image/jpeg" />}
+    <img
+      class="blog-card-image"
+      src={imageUrl}
+      width="300"
+      height="200"
+      alt={(asset?.fields?.title as string) ?? "Placeholder"}
+    />
+  </picture>
   <div class="blog-card-content">
     <div>Ihr Leitfaden</div>
     <h3>{blogPost.title}</h3>
