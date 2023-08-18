@@ -3,9 +3,9 @@ import solidJs from "@astrojs/solid-js";
 import prefetch from "@astrojs/prefetch";
 import sitemap from "@astrojs/sitemap";
 import compressor from "astro-compressor";
-import compress from "@otterlord/astro-compress";
-import critters from "@otterlord/astro-critters";
-//import rome from "@otterlord/astro-rome";
+import compress from "astro-compress";
+import critters from "astro-critters";
+import rome from "astro-rome";
 //import webmanifest from 'astro-webmanifest'; // TODO
 
 //import deno from '@astrojs/deno';
@@ -30,12 +30,12 @@ export default defineConfig({
     lastmod: new Date(),
     changefreq: 'monthly',
   }), critters(),
-  //rome(),
-  compress(), partytown({
+  rome(),
+  partytown({
     config: {
       forward: ["dataLayer.push"]
     }
-  }), compressor()],
+  }), compressor(), compress()],
   experimental: {
     //assets: true,
     //viewTransitions: true
