@@ -1,5 +1,6 @@
 ---
-import { BlogPost, BlogPostSkeleton, contentfulClient } from "../contentful";
+import type { BlogPost, BlogPostSkeleton } from "../contentful";
+import { contentfulClient } from "../contentful";
 import BlogCard from "./BlogCard.astro";
 import { useTranslations } from "../i18n";
 const { language } = Astro.params;

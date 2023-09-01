@@ -1,5 +1,5 @@
 import { defineConfig } from 'astro/config';
-import solidJs from "@astrojs/solid-js";
+import solid from "@astrojs/solid-js";
 import prefetch from "@astrojs/prefetch";
 import sitemap from "@astrojs/sitemap";
 import compressor from "astro-compressor";
@@ -10,7 +10,6 @@ import rome from "astro-rome";
 
 //import deno from '@astrojs/deno';
 import nodejs from '@astrojs/node';
-
 import partytown from "@astrojs/partytown";
 
 // https://astro.build/config
@@ -19,7 +18,7 @@ export default defineConfig({
   adapter: nodejs({
     mode: 'standalone'
   }),
-  integrations: [solidJs(), prefetch(), sitemap({
+  integrations: [solid(), prefetch(), sitemap({
     i18n: {
       defaultLocale: "en",
       locales: {
@@ -35,7 +34,11 @@ export default defineConfig({
     config: {
       forward: ["dataLayer.push"]
     }
-  }), compressor(), compress()],
+  }), compress(), compressor({
+    brotli: true,
+    gzip: true,
+    fileExtensions: [".html", ".xml", ".css", ".js", ".json", ".png", ".jpg", ".jpeg", ".webp", ".avif", ".ico", ".svg", ".jxl", ".xsl", ".woff2", ".woff", ".ttf", ".eot", ".otf", ".txt", ".md", ".webmanifest", ".mp4", ".webm", ".ogg", ".mp3", ".wav", ".flac", ".aac", ".m4a", ".oga", ".opus", ".svgz", ".zip", ".gz", ".tgz", ".tar", ".rar", ".7z", ".bz2", ".pdf", ".doc", ".docx", ".xls", ".xlsx", ".ppt", ".pptx", ".odt", ".ods", ".odp", ".csv", ".rtf", ".epub", ".mobi", ".apk", ".exe", ".swf", ".jar", ".gif", ".bmp", ".ico", ".tif", ".tiff", ".psd", ".ai", ".indd", ".webp", ".avif", ".svg", ".mpg", ".mp2", ".mpeg", ".mpe", ".mpv", ".ogg", ".m4p", ".m4v", ".avi", ".wmv", ".mov", ".qt", ".flv", ".swf", ".avchd", ".mkv", ".webm", ".mng", ".asf", ".wmv", ".avi", ".mp4", ".m4v", ".mpg", ".mpeg", ".mov", ".webm", ".flv", ".mng", ".asx", ".asf", ".wmv", ".avi", ".mp4", ".m4v", ".mpg", ".mpeg", ".mov", ".webm", ".flv", ".mng", ".asx", ".asf", ".wmv", ".avi", ".mp4", ".m4v", ".mpg", ".mpeg", ".mov", ".webm", ".flv", ".mng", ".asx", ".asf", ".wmv", ".avi", ".mp4", ".m4v", ".mpg", ".mpeg", ".mov", ".webm", ".flv", ".mng", ".asx", ".asf", ".wmv", ".svg", ".svgz", ".webp", ".avif", ".png", ".jpg", ".jpeg", ".gif", ".webp", ".avif", ".ico", ".tif", ".tiff", ".psd", ".raw", ".bmp"]
+  })],
   experimental: {
     //assets: true,
     //viewTransitions: true
@@ -46,9 +49,6 @@ export default defineConfig({
   output: "hybrid",
   site: "https://lindnerit.io/",
   compressHTML: true,
-  build: {
-    split: true
-  },
   vite: {
     build: {
       modulePreload: true,

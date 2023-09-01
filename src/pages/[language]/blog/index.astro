@@ -10,13 +10,13 @@ import BaseLayout from "../../../layouts/BaseLayout.astro";
 import HookSection from "../../../components/HookSection.astro";
 import { useTranslations } from "../../../i18n";
 import { MetaBuilder } from "../../../meta";
-import {
+import type {
   BlogCategory,
   BlogCategorySkeleton,
   BlogPost,
-  BlogPostSkeleton,
-  contentfulClient,
+  BlogPostSkeleton
 } from "../../../contentful";
+import { contentfulClient } from "../../../contentful";
 import BlogCard from "../../../components/BlogCard.astro";
 
 const { language } = Astro.params;

@@ -1,9 +1,11 @@
 import { getStaticPaths } from "../../../paramHelper";
 export { getStaticPaths };
 
-import { BlogPost, BlogPostSkeleton, contentfulClient } from '../../../contentful';
+import type { BlogPost, BlogPostSkeleton } from '../../../contentful';
+import { contentfulClient } from '../../../contentful';
 import type { APIRoute } from 'astro';
-import rss, { RSSFeedItem } from '@astrojs/rss';
+import rss from '@astrojs/rss';
+import type { RSSFeedItem } from '@astrojs/rss';
 import { documentToPlainTextString } from "@contentful/rich-text-plain-text-renderer";
 
 export const get: APIRoute = async ({ params }) => {

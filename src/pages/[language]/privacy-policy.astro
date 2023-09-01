@@ -3,11 +3,8 @@
 //export { getStaticPaths };
 export const prerender = false;
 
-import {
-  ContentPageSkeleton,
-  ContentPage,
-  contentfulClient,
-} from "../../contentful";
+import type { ContentPageSkeleton, ContentPage } from "../../contentful";
+import { contentfulClient } from "../../contentful";
 import { documentToHtmlString } from "@contentful/rich-text-html-renderer";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import Heading from "../../components/Heading.astro";

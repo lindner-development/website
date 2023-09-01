@@ -1,11 +1,8 @@
 ---
 export const prerender = false;
 
-import {
-  contentfulClient,
-  BlogPostSkeleton,
-  BlogPost,
-} from "../../../../contentful";
+import { contentfulClient } from "../../../../contentful";
+import type { BlogPostSkeleton, BlogPost } from "../../../../contentful";
 import { documentToHtmlString } from "@contentful/rich-text-html-renderer";
 import BaseLayout from "../../../../layouts/BaseLayout.astro";
 import Heading from "../../../../components/Heading.astro";

@@ -16,7 +16,7 @@
     "@astrojs/prefetch": "^0.2.3",
     "@astrojs/rss": "^2.4.4",
     "@astrojs/sitemap": "^1.4.0",
-    "@astrojs/solid-js": "^2.2.1",
+    "@astrojs/solid-js": "^3.0.0",
     "@contentful/rich-text-html-renderer": "^16.1.1",
     "@contentful/rich-text-plain-text-renderer": "^16.0.6",
     "@contentful/rich-text-types": "^16.2.1",
