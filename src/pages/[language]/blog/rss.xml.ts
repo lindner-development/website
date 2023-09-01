@@ -1,5 +1,5 @@
-import { getStaticPaths } from "../../../paramHelper";
-export { getStaticPaths };
+//import { getStaticPaths } from "../../../paramHelper";
+//export { getStaticPaths };
 
 import type { BlogPost, BlogPostSkeleton } from '../../../contentful';
 import { contentfulClient } from '../../../contentful';
