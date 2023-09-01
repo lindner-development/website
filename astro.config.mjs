@@ -46,7 +46,8 @@ export default defineConfig({
   //image: {
   //  service: sharpImageService(),
   //},
-  output: "hybrid",
+  //output: "hybrid",
+  output: "server",
   site: "https://lindnerit.io/",
   compressHTML: true,
   vite: {
