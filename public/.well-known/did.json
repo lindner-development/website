@@ -1,0 +1,42 @@
+{
+  "id": "did:web:lindnerit.io",
+  "@context": [
+    "https://www.w3.org/ns/did/v1",
+    {
+      "@base": "did:web:lindnerit.io"
+    }
+  ],
+  "service": [
+    {
+      "id": "#linkeddomains",
+      "type": "LinkedDomains",
+      "serviceEndpoint": {
+        "origins": ["https://lindnerit.io/"]
+      }
+    },
+    {
+      "id": "#hub",
+      "type": "IdentityHub",
+      "serviceEndpoint": {
+        "instances": [
+          "https://hub.did.msidentity.com/v1.0/44149fb5-8f88-4b03-9231-e019dd691dcd"
+        ]
+      }
+    }
+  ],
+  "verificationMethod": [
+    {
+      "id": "#4de22ae3087e4fff8ffbe06dbc9f9c93vcSigningKey-0993b",
+      "controller": "did:web:lindnerit.io",
+      "type": "EcdsaSecp256k1VerificationKey2019",
+      "publicKeyJwk": {
+        "crv": "secp256k1",
+        "kty": "EC",
+        "x": "SDUPSyqZZ7sURh15VJ38QhmI0odJ_rw33ZFjFq5OGK8",
+        "y": "HH5xw76-y0cTQKE4gl3PMB60ltU6K58z_2IPRoAb8ZQ"
+      }
+    }
+  ],
+  "authentication": ["#4de22ae3087e4fff8ffbe06dbc9f9c93vcSigningKey-0993b"],
+  "assertionMethod": ["#4de22ae3087e4fff8ffbe06dbc9f9c93vcSigningKey-0993b"]
+}
