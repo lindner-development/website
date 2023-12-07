@@ -1,4 +1,4 @@
-import contentful, { Asset, AssetLink } from "contentful";
+import contentful, { type Asset, type AssetLink } from "contentful";
 import type { Document } from "@contentful/rich-text-types";
 
 export interface Author {

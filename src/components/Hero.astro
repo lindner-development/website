@@ -58,10 +58,10 @@ const t = useTranslations(currentLanguage);
   <p>{t("index.hero.description")}</p>
 
   <div class="buttons">
-    <a href={`/${currentLanguage}/software-development`} rel="prefetch"
+    <a href={`/${currentLanguage}/software-development`} rel="prefetch" data-astro-prefetch="viewport"
       ><Button variant="primary">{t("index.hero.button1") as string}</Button></a
     >
-    <a href={`/${currentLanguage}/web-design`} rel="prefetch"
+    <a href={`/${currentLanguage}/web-design`} rel="prefetch" data-astro-prefetch="viewport"
       ><Button variant="primary">
         {t("index.hero.button2") as string}?
       </Button></a

@@ -24,13 +24,13 @@ Abonnieren Sie kostenlos unseren Newsletter und wir bringen Licht ins digitale C
                 alt="Lindner IT Branding"
             /></div>
             <ul class="lindner-footer-navigation">
-                <li><a href={`/${props.currentLanguage}/legal-details`}>{t("footer.legalDetails") as string}</a></li>
-                <li><a href={`/${props.currentLanguage}/privacy-policy`}>{t("footer.privacyPolicy") as string}</a></li>
-                <li><a href={`/${props.currentLanguage}/terms-of-service`}>{t("footer.termsOfService") as string}</a></li>
+                <li><a href={`/${props.currentLanguage}/legal-details`} data-astro-prefetch="hover">{t("footer.legalDetails") as string}</a></li>
+                <li><a href={`/${props.currentLanguage}/privacy-policy`} data-astro-prefetch="hover">{t("footer.privacyPolicy") as string}</a></li>
+                <li><a href={`/${props.currentLanguage}/terms-of-service`} data-astro-prefetch="hover">{t("footer.termsOfService") as string}</a></li>
             </ul>
             <div class="lindner-footer-contact">
-                <div>{t("footer.phone") as string}: <a href="tel:+4979315636150">+49 (0) 7931 5636 - 150</a></div>
-                <div>{t("footer.email") as string}: <a href="mailto:info@lindnerit.io">info@lindnerit.io</a></div>
+                <div>{t("footer.phone") as string}: <a href="tel:+4979315636150" rel="nofollow">+49 (0) 7931 5636 - 150</a></div>
+                <div>{t("footer.email") as string}: <a href="mailto:info@lindnerit.io" rel="nofollow">info@lindnerit.io</a></div>
             </div>
         </nav>
         <Separator.Root class="lindner-footer-separator" />
