@@ -47,6 +47,7 @@ export default defineConfig({
     environment: process.env.NODE_ENV?.toLowerCase()
   }), spotlightjs()],
   experimental: {
+    optimizeHoistedScript: true
     //assets: true,
     //viewTransitions: true
   },
