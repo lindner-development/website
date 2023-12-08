@@ -2,7 +2,7 @@ import type { APIRoute } from 'astro';
 
 export const prerender = false;
 
-export const get: APIRoute = async function get({ params, request }) {
+export const GET: APIRoute = async function get({ params, request }) {
     let asset = params.asset;
     let uid = params.uid;
     let image = params.image;
