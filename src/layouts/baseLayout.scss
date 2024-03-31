@@ -1,0 +1,29 @@
+@use "src/scss/colors";
+@use "src/scss/mixins";
+@import "@fontsource/mitr";
+
+:root {
+  @include mixins.light-theme;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    @include mixins.dark-theme;
+  }
+}
+
+:root[data-theme="dark"] {
+  @include mixins.dark-theme;
+}
+
+:root[data-theme="light"] {
+  @include mixins.light-theme;
+}
+
+body {
+  background: colors.$background;
+  color: colors.$foreground;
+  font-family: "Mitr", sans-serif;
+  margin: 0;
+  box-sizing: border-box;
+}

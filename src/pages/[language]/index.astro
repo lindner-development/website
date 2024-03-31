@@ -3,6 +3,7 @@
 //export { getStaticPaths };
 export const prerender = false;
 
+import BaseLayout from "../../layouts/BaseLayout.astro";
 import Header from "../../components/Header.astro";
 import Hero from "../../components/Hero.astro";
 import Heading from "../../components/Heading.astro";
@@ -10,7 +11,6 @@ import { Button } from "../../components/Button/Button";
 import FeatureContainer from "../../components/FeatureContainer.astro";
 import BlogSection from "../../components/BlogSection.astro";
 import HookSection from "../../components/HookSection.astro";
-import BaseLayout from "../../layouts/BaseLayout.astro";
 
 //import { Image } from "astro:assets";
 
@@ -37,68 +37,7 @@ metaBuilder.keywords(t("index.meta.keywords") as unknown as string[]);
 const meta = metaBuilder.create();
 ---
 
-<style lang="scss">
-  #above-the-fold {
-    height: 100vh;
-    max-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    margin: 0;
-  }
 
-  .content {
-    padding: 1rem 6rem;
-
-    @media screen and (max-width: 768px) {
-      padding: 1rem 3rem;
-    }
-  }
-
-  #about-us {
-    margin: 6rem 0;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    gap: 12rem;
-
-    & > div {
-      flex: 1 1 0;
-    }
-
-    .about-us-image {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      max-width: 50%;
-      height: auto;
-    }
-
-    @media screen and (max-width: 768px) {
-      flex-direction: column;
-      gap: 0;
-      .about-us-image {
-        display: none;
-      }
-    }
-  }
-
-  #your-partner {
-    margin: 6rem 0;
-    display: flex;
-    flex-direction: column;
-
-    a,
-    a:link {
-      color: black;
-    }
-  }
-
-  .feature-collection {
-    display: flex;
-    flex-wrap: wrap;
-  }
-</style>
 <BaseLayout {meta}>
   <section id="above-the-fold">
     <Header />
@@ -211,3 +150,65 @@ const meta = metaBuilder.create();
   </article>
   <Footer />
 </BaseLayout>
+<style lang="scss">
+  #above-the-fold {
+    height: 100vh;
+    max-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+  }
+
+  .content {
+    padding: 1rem 6rem;
+
+    @media screen and (max-width: 768px) {
+      padding: 1rem 3rem;
+    }
+  }
+
+  #about-us {
+    margin: 6rem 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12rem;
+
+    & > div {
+      flex: 1 1 0;
+    }
+
+    .about-us-image {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      max-width: 50%;
+      height: auto;
+    }
+
+    @media screen and (max-width: 768px) {
+      flex-direction: column;
+      gap: 0;
+      .about-us-image {
+        display: none;
+      }
+    }
+  }
+
+  #your-partner {
+    margin: 6rem 0;
+    display: flex;
+    flex-direction: column;
+
+    a,
+    a:link {
+      color: black;
+    }
+  }
+
+  .feature-collection {
+    display: flex;
+    flex-wrap: wrap;
+  }
+</style>
