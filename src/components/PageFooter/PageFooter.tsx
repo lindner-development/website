@@ -22,6 +22,8 @@ Abonnieren Sie kostenlos unseren Newsletter und wir bringen Licht ins digitale C
                 height="39"
                 src="/wordmark.svg"
                 alt="Lindner IT Branding"
+                loading="lazy"
+                decoding="async"
             /></div>
             <ul class="lindner-footer-navigation">
                 <li><a href={`/${props.currentLanguage}/legal-details`} data-astro-prefetch="hover">{t("footer.legalDetails") as string}</a></li>
@@ -41,17 +43,17 @@ Abonnieren Sie kostenlos unseren Newsletter und wir bringen Licht ins digitale C
                 <a href={props.englishLink} class={props.currentLanguage === "en" ? "active" : ""} hreflang="en-US" title="English">EN</a>
             </div>
             <div class="lindner-copyright-notice">
-                <div>&copy; 2023 Lindner IT UG (haftungsbeschränkt)</div>
+                <div>&copy; 2024 Lindner IT UG (haftungsbeschränkt)</div>
                 <br />
                 <div class="lindner-b2b-disclaimer">
                     {t("footer.b2bNotice") as string}
                 </div>
             </div>
             <ul class="lindner-footer-social">
-                <li><a href="https://www.instagram.com/lindner.it/" target="_blank" rel="noopener noreferrer" title="Instagram"><Instagram /></a></li>
-                <li><a href="https://www.linkedin.com/company/lindner-it/" target="_blank" rel="noopener noreferrer" title="LinkedIn"><Linkedin /></a></li>
-                <li><a href="https://www.youtube.com/@lindnerit" target="_blank" rel="noopener noreferrer" title="YouTube"><Youtube /></a></li>
-                <li><a href="https://github.com/lindner-development" target="_blank" rel="noopener noreferrer" title="Github"><Github /></a></li>
+                <li><a href="https://www.instagram.com/lindner.it/" target="_blank" rel="noopener noreferrer" title="Instagram"><Instagram aria-label="Instagram icon" /></a></li>
+                <li><a href="https://www.linkedin.com/company/lindner-it/" target="_blank" rel="noopener noreferrer" title="LinkedIn"><Linkedin aria-label="LinkedIn icon" /></a></li>
+                <li><a href="https://www.youtube.com/@lindnerit" target="_blank" rel="noopener noreferrer" title="YouTube"><Youtube aria-label="Youtube icon" /></a></li>
+                <li><a href="https://github.com/lindner-development" target="_blank" rel="noopener noreferrer" title="Github"><Github aria-label="Github icon" /></a></li>
             </ul>
         </div>
     </footer>

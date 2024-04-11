@@ -1,7 +1,7 @@
 ---
 import type { Meta } from "../meta";
-import { FloatingActionButtons } from "../components/FloatingActionButtons/FloatingActionButtons";
-import Cookies from "../components/Cookies.astro";
+//import { FloatingActionButtons } from "../components/FloatingActionButtons/FloatingActionButtons";
+//import Cookies from "../components/Cookies.astro";
 //import "./baseLayout.scss";
 
 const { language } = Astro.params;
@@ -369,8 +369,8 @@ if(Astro.site) {
   <body>
     <div id="swup"><slot /></div>
     <aside>
-      <FloatingActionButtons client:media="(max-width: 768px)" />
-      <Cookies />
+      {/*<FloatingActionButtons client:media="(max-width: 768px)" />
+      <Cookies />*/}
     </aside>
   </body>
 </html>
