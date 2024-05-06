@@ -13,6 +13,8 @@ import HookSection from "../../../components/HookSection.astro";
 import { useTranslations } from "../../../i18n";
 import { MetaBuilder } from "../../../meta";
 
+const lastChange = new Date(Date.parse("2023-07-20T00:00:00Z"));
+
 const { language } = Astro.params;
 const currentLanguage = language === "de" ? "de" : "en";
 const t = useTranslations(currentLanguage);
@@ -26,6 +28,7 @@ metaBuilder.description(
   t("webDesign.meta.twitterDescription") as string
 );
 metaBuilder.keywords(t("webDesign.meta.keywords") as unknown as string[]);
+metaBuilder.revisedAt(lastChange);
 const meta = metaBuilder.create();
 ---
 

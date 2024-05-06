@@ -35,7 +35,7 @@ export const data = {
         'index.yourpartner.titleDescription': 'Why We\'re Your Perfect Digital Ally',
         'index.yourpartner.title': 'Your Online Presence',
         'index.yourpartner.feature.gdpr.title': 'GDPR-Compliant',
-        'index.yourpartner.feature.gdpr.description': 'As partners of raidboxes and IONOS, we ensure your hosting is GDPR-compliant. Ready to put your data protection worries at ease?',
+        'index.yourpartner.feature.gdpr.description': 'As partner of raidboxes and other german providers, we ensure your hosting is GDPR-compliant. Ready to put your data protection worries at ease?',
         'index.yourpartner.feature.gdpr.link': 'Take a look',
 
         'index.yourpartner.feature.performance.title': 'Speed is the Name of the Game',
@@ -188,7 +188,7 @@ export const data = {
         'index.yourpartner.titleDescription': 'Warum wir Ihr idealer Partner sind',
         'index.yourpartner.title': 'Ihre Internetpräsenz',
         'index.yourpartner.feature.gdpr.title': 'DSGVO-konform',
-        'index.yourpartner.feature.gdpr.description': 'Als Partner von raidboxes und IONOS bieten wir Ihnen ein DSGVO-konformes Hosting.',
+        'index.yourpartner.feature.gdpr.description': 'Als Partner von raidboxes und weiteren deutschen Providern bieten wir Ihnen ein DSGVO-konformes Hosting.',
         'index.yourpartner.feature.gdpr.link': 'Mehr erfahren',
 
         'index.yourpartner.feature.performance.title': 'Geschwindigkeit ist das A und O',

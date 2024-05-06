@@ -20,6 +20,8 @@ const { language } = Astro.params;
 const currentLanguage = language === "de" ? "de" : "en";
 const t = useTranslations(currentLanguage);
 
+const lastChange = new Date(Date.parse("2023-07-20T00:00:00Z"));
+
 const metaBuilder = new MetaBuilder();
 metaBuilder.title(t("aboutus.meta.title") as string);
 metaBuilder.description(
@@ -29,6 +31,7 @@ metaBuilder.description(
   t("aboutus.meta.twitterDescription") as string
 );
 metaBuilder.keywords(t("aboutus.meta.keywords") as unknown as string[]);
+metaBuilder.revisedAt(lastChange);
 const meta = metaBuilder.create();
 ---
 
