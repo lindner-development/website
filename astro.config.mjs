@@ -6,7 +6,8 @@ import partytown from "@astrojs/partytown";
 //import spotlightjs from "@spotlightjs/astro";
 
 //import cloudflare from "@astrojs/cloudflare";
-import netlify from "@astrojs/netlify";
+//import netlify from "@astrojs/netlify";
+import netlify from '@astrojs/netlify/functions';
 
 // https://astro.build/config
 export default defineConfig({
