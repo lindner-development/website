@@ -48,21 +48,5 @@ export default defineConfig({
   //output: "hybrid",
   output: "server",
   site: "https://lindnerit.io/",
-  compressHTML: true,
-  vite: {
-    build: {
-      /*modulePreload: true,
-      minify: "terser"*/
-      /*rollupOptions: {
-        output: {
-          manualChunks: (id) => {
-            //console.log(id);
-            if (id.includes("node_modules/solid-js")) {
-              return "solid-chunk";
-            }
-          },
-        },
-      },*/
-    }
-  }
+  compressHTML: true
 });
