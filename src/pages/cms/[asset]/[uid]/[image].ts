@@ -48,7 +48,6 @@ export const GET: APIRoute = async function get({ params, request }) {
         }
 
         const buffer = Buffer.from(await response.arrayBuffer());
-
         return new Response(buffer, {
             status: 200,
             headers: {
