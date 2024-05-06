@@ -1,3 +1,4 @@
+# DEPRECATED, we use serverless functions now
 FROM node:20-alpine3.18 AS build
 ENV NODE_ENV=production
 
