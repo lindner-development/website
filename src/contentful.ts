@@ -1,4 +1,4 @@
-import { AxiosHeaders, type AxiosRequestConfig, type AxiosResponse, type AxiosResponseHeaders, type InternalAxiosRequestConfig } from "axios";
+//import { AxiosHeaders, type AxiosRequestConfig, type AxiosResponse, type AxiosResponseHeaders, type InternalAxiosRequestConfig } from "axios";
 import contentful, { type Asset, type AssetLink } from "contentful";
 import type { Document } from "@contentful/rich-text-types";
 
