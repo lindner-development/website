@@ -93,7 +93,7 @@ if (import.meta.env.CONTENTFUL_SPACE_ID === undefined) {
 
 let contentfulToken: string | undefined;
 let contentfulHost: string = "cdn.contentful.com";
-if (import.meta.env.PROD) {
+if (import.meta.env.DEV) {
     contentfulHost = "preview.contentful.com";
     contentfulToken = import.meta.env.CONTENTFUL_PREVIEW_TOKEN;
     console.log(`Contentful environment: Preview (${contentfulHost})`)
@@ -115,7 +115,7 @@ export const contentfulClient = contentful.createClient({
     space: import.meta.env.CONTENTFUL_SPACE_ID!,
     accessToken: contentfulToken,
     host: contentfulHost,
-    adapter: async (config: AxiosRequestConfig) => {
+    /*adapter: async (config: AxiosRequestConfig) => {
         const url = new URL(`${config.baseURL}/${config.url}`);
         if (config.params) {
             for (const key of Object.keys(config.params)) {
@@ -154,5 +154,5 @@ export const contentfulClient = contentful.createClient({
             request: request
         };
         return axiosResp;
-    }
+    }*/
 });
