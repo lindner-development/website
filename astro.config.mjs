@@ -5,23 +5,19 @@ import partytown from "@astrojs/partytown";
 //import sentry from "@sentry/astro";
 //import spotlightjs from "@spotlightjs/astro";
 
-import cloudflare from "@astrojs/cloudflare";
+//import cloudflare from "@astrojs/cloudflare";
+import netlify from "@astrojs/netlify";
 
 // https://astro.build/config
 export default defineConfig({
-  adapter: cloudflare({
+  /*adapter: cloudflare({
     platformProxy: {
       enabled: true
     },
     imageService: 'cloudflare',
-    /*routes: {
-      extend: {
-        exclude: [
-          { pattern: "/icons/*" },
-          { pattern: "/icons\\*" },
-        ]
-      }
-    }*/
+  }),*/
+  adapter: netlify({
+    edgeMiddleware: true
   }),
   prefetch: true,
   integrations: [solid(), sitemap({
@@ -38,14 +34,14 @@ export default defineConfig({
     config: {
       forward: ["dataLayer.push"]
     }
-  }), /*sentry({
-    dsn: "https://f69d7d9f1a48aecc94b3c4ef7a45aa77@o4506350384906240.ingest.sentry.io/4506350397489152",
-    sourceMapsUploadOptions: {
-      project: "website",
-      authToken: process.env.SENTRY_AUTH_TOKEN
-    },
-    environment: process.env.NODE_ENV?.toLowerCase()
-  }), spotlightjs()*/],
+  }) /*sentry({
+     dsn: "https://f69d7d9f1a48aecc94b3c4ef7a45aa77@o4506350384906240.ingest.sentry.io/4506350397489152",
+     sourceMapsUploadOptions: {
+     project: "website",
+     authToken: process.env.SENTRY_AUTH_TOKEN
+     },
+     environment: process.env.NODE_ENV?.toLowerCase()
+     }), spotlightjs()*/],
   //image: {
   //  service: sharpImageService(),
   //},

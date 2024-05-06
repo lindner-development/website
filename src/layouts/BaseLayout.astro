@@ -1,4 +1,5 @@
 ---
+import { ViewTransitions } from 'astro:transitions';
 import type { Meta } from "../meta";
 //import { FloatingActionButtons } from "../components/FloatingActionButtons/FloatingActionButtons";
 //import Cookies from "../components/Cookies.astro";
@@ -354,7 +355,8 @@ if(Astro.site) {
         box-sizing: border-box;
       }
     </style>
-    <script src="../pageTransitions.ts"></script>
+    <!--<script src="../pageTransitions.ts"></script>-->
+    <ViewTransitions />
     <script type="text/partytown" src="https://www.googletagmanager.com/gtag/js?id=G-T8GDWTZ831"></script>
     <script type="text/partytown">
       window.dataLayer = window.dataLayer || [];
@@ -367,7 +369,8 @@ if(Astro.site) {
     <script src="../clarity.ts"></script>
   </head>
   <body>
-    <div id="swup"><slot /></div>
+    <!--<div id="swup"><slot /></div>-->
+    <div transition:name="content" transition:animate="fade"><slot /></div>
     <aside>
       {/*<FloatingActionButtons client:media="(max-width: 768px)" />
       <Cookies />*/}
