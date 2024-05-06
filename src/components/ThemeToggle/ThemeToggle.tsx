@@ -1,7 +1,7 @@
 import { Button } from "@kobalte/core";
 import { MoonStar, Sun } from "lucide-solid"
 import { createEffect, createSignal } from "solid-js";
-import { Motion, Presence } from "@motionone/solid";
+import { Motion, Presence } from "solid-motionone";
 import "./style.scss";
 
 const initializeTheme = () => {

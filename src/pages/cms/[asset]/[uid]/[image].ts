@@ -24,7 +24,7 @@ export const GET: APIRoute = async function get({ params, request }) {
         });
     }
 
-    const contentfulSpaceId = process.env.CONTENTFUL_SPACE_ID;
+    const contentfulSpaceId = import.meta.env.CONTENTFUL_SPACE_ID;
     if (contentfulSpaceId) {
         let requestUrl = new URL(`https://images.ctfassets.net/${contentfulSpaceId}/${asset}/${uid}/${image}`);
         requestUrl.searchParams.set("fm", format);
@@ -48,7 +48,6 @@ export const GET: APIRoute = async function get({ params, request }) {
         }
 
         const buffer = Buffer.from(await response.arrayBuffer());
-
         return new Response(buffer, {
             status: 200,
             headers: {

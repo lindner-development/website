@@ -14,6 +14,8 @@ const { language } = Astro.params;
 const currentLanguage = language === "de" ? "de" : "en";
 const t = useTranslations(currentLanguage);
 
+const lastChange = new Date(Date.parse("2023-07-20T00:00:00Z"));
+
 const metaBuilder = new MetaBuilder();
 metaBuilder.title(t("legalDetails.meta.title") as string);
 metaBuilder.description(
@@ -23,6 +25,25 @@ metaBuilder.description(
   t("legalDetails.meta.twitterDescription") as string
 );
 metaBuilder.keywords(t("legalDetails.meta.keywords") as unknown as string[]);
+metaBuilder.jsonld({
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    {
+      "@type": "ListItem",
+      position: 1,
+      name: "Lindner IT",
+      item: `https://lindnerit.io/${language}/`,
+    },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: t("legalDetails.meta.title") as string,
+      item: `https://lindnerit.io/${language}/legal-details`,
+    },
+  ],
+});
+metaBuilder.revisedAt(lastChange);
 const meta = metaBuilder.create();
 ---
 

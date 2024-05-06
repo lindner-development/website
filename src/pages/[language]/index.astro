@@ -3,6 +3,7 @@
 //export { getStaticPaths };
 export const prerender = false;
 
+import BaseLayout from "../../layouts/BaseLayout.astro";
 import Header from "../../components/Header.astro";
 import Hero from "../../components/Hero.astro";
 import Heading from "../../components/Heading.astro";
@@ -10,12 +11,9 @@ import { Button } from "../../components/Button/Button";
 import FeatureContainer from "../../components/FeatureContainer.astro";
 import BlogSection from "../../components/BlogSection.astro";
 import HookSection from "../../components/HookSection.astro";
-import BaseLayout from "../../layouts/BaseLayout.astro";
 
-//import { Image } from "astro:assets";
-
-// 06.08.2023 | disable assets for now
-// import aboutUsImage from "../../assets/communication.webp";
+import aboutUsImage from "../../assets/communication.webp";
+import { Picture } from 'astro:assets';
 
 import Footer from "../../components/Footer.astro";
 import { useTranslations } from "../../i18n";
@@ -24,6 +22,8 @@ import { MetaBuilder } from "../../meta";
 const { language } = Astro.params;
 const currentLanguage = language === "de" ? "de" : "en";
 const t = useTranslations(currentLanguage);
+
+const lastChange = new Date(Date.parse("2024-05-06T00:00:00Z"));
 
 const metaBuilder = new MetaBuilder();
 metaBuilder.title(t("index.meta.title") as string);
@@ -34,71 +34,11 @@ metaBuilder.description(
   t("index.meta.twitterDescription") as string
 );
 metaBuilder.keywords(t("index.meta.keywords") as unknown as string[]);
+metaBuilder.revisedAt(lastChange);
 const meta = metaBuilder.create();
 ---
 
-<style lang="scss">
-  #above-the-fold {
-    height: 100vh;
-    max-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    margin: 0;
-  }
 
-  .content {
-    padding: 1rem 6rem;
-
-    @media screen and (max-width: 768px) {
-      padding: 1rem 3rem;
-    }
-  }
-
-  #about-us {
-    margin: 6rem 0;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    gap: 12rem;
-
-    & > div {
-      flex: 1 1 0;
-    }
-
-    .about-us-image {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      max-width: 50%;
-      height: auto;
-    }
-
-    @media screen and (max-width: 768px) {
-      flex-direction: column;
-      gap: 0;
-      .about-us-image {
-        display: none;
-      }
-    }
-  }
-
-  #your-partner {
-    margin: 6rem 0;
-    display: flex;
-    flex-direction: column;
-
-    a,
-    a:link {
-      color: black;
-    }
-  }
-
-  .feature-collection {
-    display: flex;
-    flex-wrap: wrap;
-  }
-</style>
 <BaseLayout {meta}>
   <section id="above-the-fold">
     <Header />
@@ -121,7 +61,7 @@ const meta = metaBuilder.create();
         >
       </div>
       {/*<Image class="about-us-image" src={aboutUsImage} alt="About us" />*/}
-      <picture class="about-us-image">
+      {/*<picture class="about-us-image">
         <source srcset="/communication.avif" type="image/avif" />
         <source srcset="/communication.jxl" type="image/jxl" />
         <source srcset="/communication.webp" type="image/webp" />
@@ -134,7 +74,16 @@ const meta = metaBuilder.create();
           loading="lazy"
           decoding="async"
         />
-      </picture>
+      </picture>*/}
+      <Picture 
+        class="about-us-image"
+        pictureAttributes={{class: "about-us-image"}} 
+        src={aboutUsImage} 
+        formats={["avif", "webp"]}
+        alt="About us" 
+        loading="lazy" 
+        decoding="async"
+      />
     </section>
     <section id="your-partner">
       <Heading>
@@ -211,3 +160,65 @@ const meta = metaBuilder.create();
   </article>
   <Footer />
 </BaseLayout>
+<style lang="scss">
+  #above-the-fold {
+    height: 100vh;
+    max-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+  }
+
+  .content {
+    padding: 1rem 6rem;
+
+    @media screen and (max-width: 768px) {
+      padding: 1rem 3rem;
+    }
+  }
+
+  #about-us {
+    margin: 6rem 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12rem;
+
+    & > div {
+      flex: 1 1 0;
+    }
+
+    :global(.about-us-image) {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      max-width: 50%;
+      height: auto;
+    }
+
+    @media screen and (max-width: 768px) {
+      flex-direction: column;
+      gap: 0;
+      :global(.about-us-image) {
+        display: none;
+      }
+    }
+  }
+
+  #your-partner {
+    margin: 6rem 0;
+    display: flex;
+    flex-direction: column;
+
+    a,
+    a:link {
+      color: black;
+    }
+  }
+
+  .feature-collection {
+    display: flex;
+    flex-wrap: wrap;
+  }
+</style>

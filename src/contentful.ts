@@ -1,3 +1,4 @@
+//import { AxiosHeaders, type AxiosRequestConfig, type AxiosResponse, type AxiosResponseHeaders, type InternalAxiosRequestConfig } from "axios";
 import contentful, { type Asset, type AssetLink } from "contentful";
 import type { Document } from "@contentful/rich-text-types";
 
@@ -85,16 +86,16 @@ export type ContentPageSkeleton = {
     }
 }
 
-if (process.env.CONTENTFUL_SPACE_ID === undefined) {
+if (import.meta.env.CONTENTFUL_SPACE_ID === undefined) {
     console.error("CONTENTFUL_SPACE_ID is undefined. This will produce undefined behavior!");
     throw new Error("CONTENTFUL_SPACE_ID is undefined.");
 }
 
 let contentfulToken: string | undefined;
 let contentfulHost: string = "cdn.contentful.com";
-if (process.env.NODE_ENV?.toLowerCase() !== "production") {
+if (import.meta.env.DEV) {
     contentfulHost = "preview.contentful.com";
-    contentfulToken = process.env.CONTENTFUL_PREVIEW_TOKEN;
+    contentfulToken = import.meta.env.CONTENTFUL_PREVIEW_TOKEN;
     console.log(`Contentful environment: Preview (${contentfulHost})`)
     if (contentfulToken === undefined) {
         console.error("CONTENTFUL_PREVIEW_TOKEN is undefined.");
@@ -102,7 +103,7 @@ if (process.env.NODE_ENV?.toLowerCase() !== "production") {
     }
 }
 else {
-    contentfulToken = process.env.CONTENTFUL_DELIVERY_TOKEN;
+    contentfulToken = import.meta.env.CONTENTFUL_DELIVERY_TOKEN;
     console.log(`Contentful environment: Production (${contentfulHost})`)
     if (contentfulToken === undefined) {
         console.error("CONTENTFUL_DELIVERY_TOKEN is undefined.");
@@ -110,10 +111,48 @@ else {
     }
 }
 
-// Do not use import.meta.env because import.meta.envs are replaced in build-time
-// Secrets should be runtime-only
 export const contentfulClient = contentful.createClient({
-    space: process.env.CONTENTFUL_SPACE_ID!,
+    space: import.meta.env.CONTENTFUL_SPACE_ID!,
     accessToken: contentfulToken,
     host: contentfulHost,
+    /*adapter: async (config: AxiosRequestConfig) => {
+        const url = new URL(`${config.baseURL}/${config.url}`);
+        if (config.params) {
+            for (const key of Object.keys(config.params)) {
+                url.searchParams.append(key, config.params[key]);
+            }
+        }
+
+        const headers: Record<string, string> = {};
+        if (config.headers) {
+            for (const k in config.headers) {
+                const v = config.headers[k];
+                headers[k] = v;
+            }
+        }
+        const request = new Request(url.href, {
+            method: config.method ? config.method.toUpperCase() : "GET",
+            body: config.data,
+            redirect: 'manual',
+            headers: headers
+            //headers: config.headers ? config.headers : {}
+            // credentials: config.withCredentials ? 'include' : 'omit', // not implemented on CF
+            //mode: 'cors' // not implemented on CF,
+        });
+
+        const response = await fetch(request);
+        const responseHeaders: AxiosResponseHeaders = new AxiosHeaders();
+        response.headers.forEach((value, key) => {
+            responseHeaders[key] = value;
+        });
+        const axiosResp: AxiosResponse = {
+            data: await response.json(),
+            status: response.status,
+            statusText: response.statusText,
+            headers: responseHeaders,
+            config: config as InternalAxiosRequestConfig<any>,
+            request: request
+        };
+        return axiosResp;
+    }*/
 });

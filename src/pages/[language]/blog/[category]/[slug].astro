@@ -30,6 +30,7 @@ const entry = entries.items[0];
 if (!entry) {
   return 404;
 }
+
 const contentPage: BlogPost = entry.fields;
 const htmlContent = documentToHtmlString(contentPage.content);
 
@@ -68,10 +69,11 @@ metaBuilder.jsonld({
       jobTitle: contentPage.author.fields.position,
     },
   ],
-  wordCount: contentPage.content?.content.reduce(
-    (acc, cur) => acc + cur.content.length,
-    0
-  ),
+  //wordCount: contentPage.content?.content.reduce(
+  //  (acc: number, cur: any) => acc + cur.content.length,
+  //  0
+  //),
+  wordCount: 1000,
   url: Astro.url,
 });
 
@@ -135,3 +137,6 @@ let meta = metaBuilder.create();
     <Footer />
   </main>
 </BaseLayout>
+
+---
+<div></div>

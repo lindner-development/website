@@ -4,12 +4,20 @@
     "jsx": "preserve",
     "jsxImportSource": "solid-js",
     "paths": {
+      "~/*": [
+        "./src/*"
+      ],
       "@components/*": [
-        "src/components/*"
+        "./src/components/*"
       ],
       "@layouts/*": [
-        "src/layouts/*"
+        "./src/layouts/*"
       ],
     }
-  }
+  },
+  "exclude": [
+    "node_modules",
+    "dist",
+    "public"
+  ]
 }

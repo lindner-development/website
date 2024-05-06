@@ -7,8 +7,10 @@ import Footer from "../../components/Footer.astro";
 import Header from "../../components/Header.astro";
 import Heading from "../../components/Heading.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
-//import lindner from "../../assets/lindner.webp";
-//import { Image } from "astro:assets";
+
+import lindner from "../../assets/lindner.webp";
+import { Picture } from "astro:assets";
+
 import { Button } from "../../components/Button/Button";
 import HookSection from "../../components/HookSection.astro";
 import { useTranslations } from "../../i18n";
@@ -17,6 +19,8 @@ import { MetaBuilder } from "../../meta";
 const { language } = Astro.params;
 const currentLanguage = language === "de" ? "de" : "en";
 const t = useTranslations(currentLanguage);
+
+const lastChange = new Date(Date.parse("2023-07-20T00:00:00Z"));
 
 const metaBuilder = new MetaBuilder();
 metaBuilder.title(t("aboutus.meta.title") as string);
@@ -27,6 +31,7 @@ metaBuilder.description(
   t("aboutus.meta.twitterDescription") as string
 );
 metaBuilder.keywords(t("aboutus.meta.keywords") as unknown as string[]);
+metaBuilder.revisedAt(lastChange);
 const meta = metaBuilder.create();
 ---
 
@@ -100,7 +105,8 @@ const meta = metaBuilder.create();
           alt="Avatar of Robin Lindner"
         />*/
         }
-        <picture class="aboutus-image">
+        {
+          /*<picture class="aboutus-image">
           <source srcset="/lindner.avif" type="image/avif" />
           <source srcset="/lindner.jxl" type="image/jxl" />
           <source srcset="/lindner.webp" type="image/webp" />
@@ -112,7 +118,18 @@ const meta = metaBuilder.create();
             decoding="async"
             alt="Avatar of Robin Lindner"
           />
-        </picture>
+        </picture>*/
+        }
+        <Picture 
+          class="aboutus-image" 
+          src={lindner} 
+          formats={["avif", "webp"]}
+          height="480" 
+          width="320" 
+          loading="eager"
+          decoding="async" 
+          alt="Avatar of Robin Lindner"
+         />
         <div>
           <h2>{t("aboutus.content.headline")}</h2>
           <div>
