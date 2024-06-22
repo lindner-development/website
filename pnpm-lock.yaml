@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@astrojs/cloudflare':
-        specifier: ^10.2.5
-        version: 10.2.5(astro@4.7.1(@types/node@20.12.10)(sass@1.76.0)(terser@5.31.0)(typescript@4.9.5))
+        specifier: 0.0.0-cf-deps-chunk-20240508124857
+        version: 0.0.0-cf-deps-chunk-20240508124857(astro@4.7.1(@types/node@20.12.10)(sass@1.76.0)(terser@5.31.0)(typescript@4.9.5))
       '@astrojs/netlify':
         specifier: ^5.2.0
         version: 5.2.0(@opentelemetry/api@1.8.0)(astro@4.7.1(@types/node@20.12.10)(sass@1.76.0)(terser@5.31.0)(typescript@4.9.5))
@@ -118,8 +118,8 @@ packages:
     resolution: {integrity: sha512-30iZtAPgz+LTIYoeivqYo853f02jBYSd5uGnGpkFV0M3xOt9aN73erkgYAmZU43x4VfqcnLxW9Kpg3R5LC4YYw==}
     engines: {node: '>=6.0.0'}
 
-  '@astrojs/cloudflare@10.2.5':
-    resolution: {integrity: sha512-5tKPU5m/zYwz2CU9vCSKo4tgWsdD7xwpUlDkVbKPwgSkfVB6ZuXb8ffLYnahtUc1Gvh7HgaBSaagPVHGCp73WQ==}
+  '@astrojs/cloudflare@0.0.0-cf-deps-chunk-20240508124857':
+    resolution: {integrity: sha512-NePVicBsRSkO0rNuF0cCfJZIiZPC9WSwZyCwD4ienmVREqsWb0WaFuPe++3BmOU+35NubzTMVJVx4zTX82Bs5Q==}
     peerDependencies:
       astro: ^4.2.0
 
@@ -4750,7 +4750,7 @@ snapshots:
       '@jridgewell/gen-mapping': 0.3.5
       '@jridgewell/trace-mapping': 0.3.25
 
-  '@astrojs/cloudflare@10.2.5(astro@4.7.1(@types/node@20.12.10)(sass@1.76.0)(terser@5.31.0)(typescript@4.9.5))':
+  '@astrojs/cloudflare@0.0.0-cf-deps-chunk-20240508124857(astro@4.7.1(@types/node@20.12.10)(sass@1.76.0)(terser@5.31.0)(typescript@4.9.5))':
     dependencies:
       '@astrojs/internal-helpers': 0.3.0
       '@astrojs/underscore-redirects': 0.3.3
@@ -6646,7 +6646,7 @@ snapshots:
 
   '@types/sax@1.2.7':
     dependencies:
-      '@types/node': 17.0.45
+      '@types/node': 20.12.10
 
   '@types/unist@2.0.10': {}
 

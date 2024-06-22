@@ -5,21 +5,21 @@ import partytown from "@astrojs/partytown";
 //import sentry from "@sentry/astro";
 //import spotlightjs from "@spotlightjs/astro";
 
-//import cloudflare from "@astrojs/cloudflare";
+import cloudflare from "@astrojs/cloudflare";
 //import netlify from "@astrojs/netlify";
 import netlify from '@astrojs/netlify/functions';
 
 // https://astro.build/config
 export default defineConfig({
-  /*adapter: cloudflare({
+  adapter: cloudflare({
     platformProxy: {
       enabled: true
     },
     imageService: 'cloudflare',
-  }),*/
-  adapter: netlify({
-    edgeMiddleware: true
   }),
+  /*adapter: netlify({
+    edgeMiddleware: true
+  }),*/
   prefetch: true,
   integrations: [solid(), sitemap({
     i18n: {
