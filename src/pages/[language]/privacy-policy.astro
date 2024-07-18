@@ -3,6 +3,12 @@
 //export { getStaticPaths };
 export const prerender = false;
 
+import Header from "../../components/Header.astro";
+//import { MetaBuilder } from "../../meta";
+import Heading from "../../components/Heading.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Footer from "../../components/Footer.astro";
+/*
 import type { ContentPageSkeleton, ContentPage } from "../../contentful";
 import { contentfulClient } from "../../contentful";
 import { documentToHtmlString } from "@contentful/rich-text-html-renderer";
@@ -10,7 +16,6 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 import Heading from "../../components/Heading.astro";
 import Header from "../../components/Header.astro";
 import Footer from "../../components/Footer.astro";
-import { MetaBuilder } from "../../meta";
 
 const { language } = Astro.params;
 
@@ -50,7 +55,7 @@ metaBuilder.jsonld({
   ],
 });
 
-const meta = metaBuilder.create();
+const meta = metaBuilder.create();*/
 ---
 
 <style lang="scss">
@@ -62,12 +67,15 @@ const meta = metaBuilder.create();
     }
   }
 </style>
-<BaseLayout {meta}>
+<!--<BaseLayout {meta}>-->
+<BaseLayout>
   <main>
     <Header />
     <article>
-      <Heading headingType="h1">{contentPage.title}</Heading>
-      <div set:html={htmlContent} />
+      <!--<Heading headingType="h1">{contentPage.title}</Heading>
+      <div set:html={htmlContent} />-->
+      <Heading headingType="h1">Privacy Policy</Heading>
+      <div></div>
     </article>
     <Footer />
   </main>

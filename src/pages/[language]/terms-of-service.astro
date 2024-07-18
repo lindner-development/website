@@ -3,15 +3,16 @@
 //export { getStaticPaths };
 export const prerender = false;
 
-import type { ContentPageSkeleton, ContentPage } from "../../contentful";
-import { contentfulClient } from "../../contentful";
-import { documentToHtmlString } from "@contentful/rich-text-html-renderer";
+//import type { ContentPageSkeleton, ContentPage } from "../../contentful";
+//import { contentfulClient } from "../../contentful";
+//import { documentToHtmlString } from "@contentful/rich-text-html-renderer";
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import Heading from "../../components/Heading.astro";
+//import Heading from "../../components/Heading.astro";
 import Header from "../../components/Header.astro";
 import Footer from "../../components/Footer.astro";
-
+/*
 const { language } = Astro.params;
+
 
 const entry = await contentfulClient.getEntry<ContentPageSkeleton>(
   "2kxs8WENszRanwaymMAp4j",
@@ -20,7 +21,7 @@ const entry = await contentfulClient.getEntry<ContentPageSkeleton>(
   }
 );
 const contentPage: ContentPage = entry.fields;
-const htmlContent = documentToHtmlString(contentPage.content);
+const htmlContent = documentToHtmlString(contentPage.content);*/
 ---
 
 <style lang="scss">
@@ -36,8 +37,8 @@ const htmlContent = documentToHtmlString(contentPage.content);
   <main>
     <Header />
     <article>
-      <Heading headingType="h1">{contentPage.title}</Heading>
-      <div set:html={htmlContent} />
+      <!--<Heading headingType="h1">{contentPage.title}</Heading>
+      <div set:html={htmlContent} />-->
     </article>
     <Footer />
   </main>
