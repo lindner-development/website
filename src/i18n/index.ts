@@ -101,14 +101,14 @@ export const data = {
 
         'legalDetails.title': 'Lindner IT \u002d Legal details',
         'legalDetails.meta.title': 'Lindner IT \u002d Legal details',
-        'legalDetails.meta.description': 'Information according to §\u00A05\u00A0TMG about the company Lindner IT UG (haftungsbeschränkt) registered in the German Commercial Register.',
-        'legalDetails.meta.openGraphDescription': 'Information according to §\u00A05\u00A0TMG about the company Lindner IT UG (haftungsbeschränkt) registered in the German Commercial Register.',
-        'legalDetails.meta.twitterDescription': 'Information according to §\u00A05\u00A0TMG about the company Lindner IT UG (haftungsbeschränkt) registered in the German Commercial Register.',
+        'legalDetails.meta.description': 'Information according to §\u00A05\u00A0DDG about the company Lindner IT UG (haftungsbeschränkt) registered in the German Commercial Register.',
+        'legalDetails.meta.openGraphDescription': 'Information according to §\u00A05\u00A0DDG about the company Lindner IT UG (haftungsbeschränkt) registered in the German Commercial Register.',
+        'legalDetails.meta.twitterDescription': 'Information according to §\u00A05\u00A0DDG about the company Lindner IT UG (haftungsbeschränkt) registered in the German Commercial Register.',
         'legalDetails.meta.keywords': ['Lindner IT', 'Legal details', 'Lindner IT UG (haftungsbeschränkt)'],
 
         'legalDetails.content.title': 'Legal details',
         'legalDetails.content.titleDescription': 'So you know who you are doing business with.',
-        'legalDetails.content.companyDetailsTitle': 'Information according to § 5 TMG',
+        'legalDetails.content.companyDetailsTitle': 'Information according to § 5 DDG',
         'legalDetails.content.representedBy': 'Represented by',
         'legalDetails.content.representedByTitle': 'Chief Executive Officer (CEO)',
 
@@ -130,7 +130,7 @@ export const data = {
         'legalDetails.content.euDisputeResolution': 'The European Commission provides a platform for online dispute resolution (ODR):',
 
         'legalDetails.content.disclaimerTitle': 'Disclaimer',
-        'legalDetails.content.disclaimer': 'As a service provider, we are responsible for our own content on these pages in accordance with §\u00A07 par. 1 TMG under the general laws. Despite careful control of the content, we assume no liability for external links and their content.',
+        'legalDetails.content.disclaimer': 'As a service provider, we are responsible for our own content on these pages in accordance with §\u00A07 par. 1 DDG under the general laws. Despite careful control of the content, we assume no liability for external links and their content.',
 
         'legalDetails.content.consumerDisputeResolutionTitle': 'Consumer dispute resolution/Universal arbitration board',
         'legalDetails.content.consumerDisputeResolution': 'We are not willing or obliged to participate in dispute resolution proceedings before a consumer arbitration board according to §\u00A036\u00A0VSBG.',
@@ -254,15 +254,15 @@ export const data = {
 
         'legalDetails.title': 'Lindner IT \u002d Impressum',
         'legalDetails.meta.title': 'Lindner IT \u002d Impressum',
-        'legalDetails.meta.description': 'Informationen gemäß § 5 TMG über die im deutschen Handelsregister registrierte Firma Lindner IT UG (haftungsbeschränkt).',
-        'legalDetails.meta.openGraphDescription': 'Informationen gemäß §\u00A05\u00A0TMG über die im deutschen Handelsregister registrierte Firma Lindner IT UG (haftungsbeschränkt).',
-        'legalDetails.meta.twitterDescription': 'Informationen gemäß §\u00A05\u00A0TMG über die im deutschen Handelsregister registrierte Firma Lindner IT UG (haftungsbeschränkt).',
+        'legalDetails.meta.description': 'Informationen gemäß § 5 DDG über die im deutschen Handelsregister registrierte Firma Lindner IT UG (haftungsbeschränkt).',
+        'legalDetails.meta.openGraphDescription': 'Informationen gemäß §\u00A05\u00A0DDG über die im deutschen Handelsregister registrierte Firma Lindner IT UG (haftungsbeschränkt).',
+        'legalDetails.meta.twitterDescription': 'Informationen gemäß §\u00A05\u00A0DDG über die im deutschen Handelsregister registrierte Firma Lindner IT UG (haftungsbeschränkt).',
         'legalDetails.meta.keywords': ['Lindner IT', 'Impressum', 'Lindner IT UG (haftungsbeschränkt)'],
 
         'legalDetails.content.title': 'Impressum',
         'legalDetails.content.titleDescription': 'Damit Sie wissen mit wem Sie Geschäfte machen',
 
-        'legalDetails.content.companyDetailsTitle': 'Angaben gemäß §\u00A05\u00A0TMG',
+        'legalDetails.content.companyDetailsTitle': 'Angaben gemäß §\u00A05\u00A0DDG',
         'legalDetails.content.representedBy': 'Vertreten durch',
         'legalDetails.content.representedByTitle': 'Geschäftsführer',
 
@@ -284,7 +284,7 @@ export const data = {
         'legalDetails.content.euDisputeResolution': 'Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit:',
 
         'legalDetails.content.disclaimerTitle': 'Haftung',
-        'legalDetails.content.disclaimer': 'Als Diensteanbieter sind wir gemäß §\u00A07 Abs. 1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Trotz sorgfältiger inhaltlicher Kontrolle übernehmen wir keine Haftung für externe Links sowie dessen Inhalte.',
+        'legalDetails.content.disclaimer': 'Als Diensteanbieter sind wir gemäß §\u00A07 Abs. 1 DDG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Trotz sorgfältiger inhaltlicher Kontrolle übernehmen wir keine Haftung für externe Links sowie dessen Inhalte.',
 
         'legalDetails.content.consumerDisputeResolutionTitle': 'Verbraucherstreitbeilegung',
         'legalDetails.content.consumerDisputeResolution': 'Wir sind nicht bereit und nicht verpflichtet gemäß §\u00A036\u00A0VSBG an einem Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.',
